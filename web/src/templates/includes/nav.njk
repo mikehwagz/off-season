@@ -1,0 +1,9 @@
+<nav class="abs fill df z1 pen">
+  {% for item in nav %}
+    <div{% if active == loop.index0 %} class="fg1"{% endif %}>
+      <a class="{% classNames 'tab db pea', '' if loop.first else 'bl' %}" href="{{ item.href }}">
+        <div class="tab__label abs f32 lh100">{{ item.title }}</div>
+      </a>
+    </div>
+  {% endfor %}
+</nav>

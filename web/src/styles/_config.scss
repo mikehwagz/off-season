@@ -22,8 +22,8 @@ $line-heights: (
 );
 
 $letter-spacings: (
-  'ls0': 0,
-  'lsn2': -0.02em,
+  '0': 0,
+  'n2': -0.02em,
 );
 
 $font-stacks: (
@@ -52,6 +52,33 @@ $border-styles: (
 $border-widths: (
   '1': 1px,
 );
+
+$margin-units: ();
+@for $i from -60 through 60 {
+  $key: $i * 5;
+  @if ($i < 0) {
+    $key: 'n#{$i * -5}';
+  }
+  $value: $i * 0.5rem;
+  $margin-units: map-merge(
+    $margin-units,
+    (
+      $key: $value,
+    )
+  );
+}
+
+$padding-units: ();
+@for $i from 0 through 60 {
+  $key: $i * 5;
+  $value: $key * 0.1rem;
+  $padding-units: map-merge(
+    $padding-units,
+    (
+      $key: $value,
+    )
+  );
+}
 
 $breakpoints: (
   xs: 415px,

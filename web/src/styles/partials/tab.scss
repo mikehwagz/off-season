@@ -1,0 +1,25 @@
+.tab {
+  width: 5.5rem;
+  height: 100vh;
+
+  &__label {
+    top: 16.5rem;
+    padding: 1.2rem 0;
+    transform-origin: top left;
+    transform: rotate(-90deg);
+    // mix-blend-mode: difference;
+    color: $black;
+    display: flex;
+    align-items: baseline;
+
+    &::before {
+      content: '';
+      display: inline-block;
+      width: 2rem;
+      height: 2rem;
+      border-radius: 50%;
+      background-color: $black;
+      margin-right: 1rem;
+    }
+  }
+}
