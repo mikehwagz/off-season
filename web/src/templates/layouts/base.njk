@@ -11,19 +11,7 @@
 
       {% include 'header.njk' %}
 
-      <div class="fix fill-y w25 pt-nav br df fc">
-        <div class="pv25 ph15 y bb">
-          <p class="f24 lh125">Off Season is a design and photo studio with a focus in music. Founded in New York City by Ross Nicol in 2018, Off Season takes a holistic and strategic approach in defining and developing an artist’s creative direction through design, photography and typography.</p>
-        </div>
-        <div class="r r--1x1">
-          <div class="ro bg-gray p35">
-            <svg class="db" viewBox="0 0 278 278" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="20.5" y="0.5" width="257" height="257" stroke="black"/>
-              <rect x="0.5" y="20.5" width="257" height="257" stroke="black"/>
-            </svg>
-          </div>
-        </div>
-      </div>
+      {% include 'sidebar.njk' %}
 
       <main class="fix right fill-y w75 pt-nav">
         <div class="rel x y" data-router-wrapper>
@@ -31,27 +19,6 @@
         </div>
       </main>
 
-    </div>
-
-    <div id="grid" class="fix fill pen">
-      <div class="g fix fill">
-        <div class="x y bg-black o10"></div>
-        <div class="x y bg-black o10"></div>
-        <div class="x y bg-black o10"></div>
-        <div class="x y bg-black o10"></div>
-        <div class="x y bg-black o10"></div>
-        <div class="x y bg-black o10"></div>
-        <div class="x y bg-black o10"></div>
-        <div class="x y bg-black o10"></div>
-        <div class="x y bg-black o10"></div>
-        <div class="x y bg-black o10"></div>
-        <div class="x y bg-black o10"></div>
-        <div class="x y bg-black o10"></div>
-        <div class="x y bg-black o10"></div>
-        <div class="x y bg-black o10"></div>
-        <div class="x y bg-black o10"></div>
-        <div class="x y bg-black o10"></div>
-      </div>
     </div>
 
     <script src="{% webpackAsset 'main.js' %}"></script>

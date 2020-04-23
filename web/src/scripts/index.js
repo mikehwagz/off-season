@@ -6,9 +6,6 @@ import base from '@/renderers/base'
 // transitions
 import instant from '@/transitions/instant'
 
-import { toggleVisibilityOnKey } from '@/util/misc'
-toggleVisibilityOnKey('#grid', 'g')
-
 const H = new Highway.Core({
   renderers: {
     default: base,
