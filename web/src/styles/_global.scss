@@ -38,3 +38,7 @@ a {
 .pt-nav {
   padding-top: 4.8rem;
 }
+
+[data-router-view] {
+  @include hidden;
+}

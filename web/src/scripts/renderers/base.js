@@ -13,6 +13,8 @@ class Base extends Highway.Renderer {
 
     // mount picoapp
     this.mount()
+
+    gsap.set('[data-router-view]', { autoAlpha: 1 })
   }
 
   onEnter() {

@@ -1,9 +1,12 @@
 import Highway from '@dogstudio/highway'
+import gsap from 'gsap'
+import { index } from '@selfaware/martha'
 
 class Instant extends Highway.Transition {
-  in({ from, to, done }) {
-    window.scrollTo(0, 0)
+  in({ to, from, done }) {
     from.remove()
+
+    gsap.set(to, { autoAlpha: 1 })
     done()
   }
 
