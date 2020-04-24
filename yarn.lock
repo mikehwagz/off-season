@@ -1524,9 +1524,10 @@
     "@sanity/util" "1.149.7"
     loader-utils "1.1.0"
 
-"@selfaware/martha@^0.0.3":
-  version "0.0.3"
-  resolved "https://registry.yarnpkg.com/@selfaware/martha/-/martha-0.0.3.tgz#3b8ff36992a68ff13b66f034ad9b9c9592f38a31"
+"@selfaware/martha@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@selfaware/martha/-/martha-0.0.5.tgz#464f7f5e9a03a63a7b68b7b4071d26e962c8ded0"
+  integrity sha512-EgrciBhySuJ6oNO7Qtuk/p29neZAHdSw1j3SKN5mZe8sqVtxL6tobDlOYISXgWCWfFLA3t3vuJrtTCmBLA0oLw==
 
 "@selfaware/wool@^1.0.3":
   version "1.0.3"
