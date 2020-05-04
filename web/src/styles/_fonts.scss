@@ -9,9 +9,18 @@
 
 @font-face {
   font-family: 'Panama Regular';
-  src: url('../assets/fonts/PanamaDemo-Regular.woff2') format('woff2'),
-    url('../assets/fonts/PanamaDemo-Regular.woff') format('woff');
+  src: url('../assets/fonts/Panama-Regular.woff2') format('woff2'),
+    url('../assets/fonts/Panama-Regular.woff') format('woff');
   font-weight: normal;
   font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'Panama Regular';
+  src: url('../assets/fonts/PanamaDemo-Italic.woff2') format('woff2'),
+    url('../assets/fonts/PanamaDemo-Italic.woff') format('woff');
+  font-weight: normal;
+  font-style: italic;
   font-display: swap;
 }
