@@ -1,7 +1,11 @@
 import { picoapp } from 'picoapp'
 import { size } from '@selfaware/martha'
 
-const components = {}
+import mark from '@/components/mark'
+
+const components = {
+  mark,
+}
 
 const state = {
   ...size(),
