@@ -22,12 +22,23 @@ class ToProject extends Highway.Transition {
     let first = rect(trigger).top
     let last = rect(to.refs.title).top
     let y = Math.round(first - last)
-    let duration = round(map(Math.abs(y), 0, app.getState().wh, 0.8, 1.2), 100)
 
-    tl.set([to.refs.title, to.refs.content], { y })
-      .set(to.refs.content, { autoAlpha: 0 })
+    let min = 1.1
+    let max = 1.5
+    let duration = round(map(Math.abs(y), 0, app.getState().wh, min, max), 100)
+
+    tl.set(to.refs.title, { y })
+      .set(to.refs.content, { y: y + 100, autoAlpha: 0 })
       .set(to, { autoAlpha: 1 })
-      .set(from.refs.items, { autoAlpha: 0 })
+      .to(
+        from,
+        {
+          duration: duration * 0.5,
+          autoAlpha: 0,
+          ease: 'expo',
+        },
+        'a',
+      )
       .to(
         to.refs.title,
         {
