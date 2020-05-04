@@ -1,0 +1,11 @@
+.badge {
+  width: 13rem;
+  height: 13rem;
+
+  &__char {
+    width: 1.3rem;
+    height: 6rem;
+    transform-origin: bottom center;
+    // border: 1px solid red;
+  }
+}
