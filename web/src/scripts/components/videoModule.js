@@ -9,6 +9,7 @@ export default component((node, ctx) => {
   let { video, mute, muteText, waveWrap } = choozy(node)
 
   let wave = createWave(waveWrap)
+  wave.amp.off = 2
 
   let isInViewport = {
     last: false,

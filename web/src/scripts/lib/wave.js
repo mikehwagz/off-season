@@ -1,6 +1,6 @@
 import createCanvas from '@/util/canvas'
 
-export default function createWave(el) {
+export default function createWave(el, opt = {}) {
   let c2d = createCanvas(el)
 
   let isOn = false
@@ -12,14 +12,13 @@ export default function createWave(el) {
     off: 0,
   }
 
-  let speed = 25
-  let ease = 0.2
-  let wMax = 0
-  let yStart = 0
-  let freq = 0
+  let speed = opt.speed ?? 25
+  let ease = opt.ease ?? 0.2
+  let frequency = opt.frequency ?? 12
 
   return {
     ...c2d,
+    amp,
     get isOn() {
       return isOn ? true : false
     },
@@ -40,12 +39,7 @@ export default function createWave(el) {
 
       c2d.ctx.lineWidth = 2
 
-      wMax = c2d.w
-      yStart = c2d.h / 2
-      freq = 12 / c2d.h
-
       amp.on = c2d.h / 4
-      amp.off = 2
       amp.t = isOn ? amp.on : amp.off
       amp.c = amp.t
     },
@@ -56,9 +50,9 @@ export default function createWave(el) {
       c2d.ctx.beginPath()
       c2d.ctx.strokeStyle = '#000000'
 
-      for (let s = 0; s < wMax; s++) {
-        let e = amp.c * Math.sin(s * freq + t / speed)
-        c2d.ctx.lineTo(s, yStart + e)
+      for (let s = 0; s < c2d.w; s++) {
+        let e = amp.c * Math.sin(s * (frequency / c2d.h) + t / speed)
+        c2d.ctx.lineTo(s, c2d.h / 2 + e)
       }
 
       c2d.ctx.stroke()

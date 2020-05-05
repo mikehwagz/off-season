@@ -1,0 +1,27 @@
+<div class="signup rel" data-component="signup">
+  <form
+    class="signup__form x df js-form"
+    action="/.netlify/functions/signup"
+    autocomplete="off"
+    >
+    <input
+      class="signup__input x bb pv5"
+      name="email"
+      type="email"
+      placeholder="Email address"
+      required
+    >
+    <button class="signup__submit bb pv5 ph15 js-submit" type="submit" aria-label="submit">
+      <div class="signup__arrow rel">
+        {% include 'arrowRight.njk' %}
+        <div class="signup__wave abs fill js-waveWrap"></div>
+      </div>
+    </button>
+  </form>
+  <p
+    class="signup__success abs fill df aic js-success"
+    style="opacity: 0; visibility: hidden;"
+  >
+    Thank you for subscribing
+  </p>
+</div>

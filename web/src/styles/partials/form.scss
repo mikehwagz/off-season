@@ -1,10 +1,19 @@
-.form {
-  &__input {
+.signup {
+  &__form {
   }
 
-  &__btn {
-    &__icon {
-      width: 5.1rem;
-    }
+  &__input {
+    outline: unset;
+  }
+
+  &__submit {
+    outline: unset;
+  }
+
+  &__arrow {
+    width: 5.1rem;
+  }
+
+  &__wave {
   }
 }

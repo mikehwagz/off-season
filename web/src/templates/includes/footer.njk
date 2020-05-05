@@ -2,25 +2,13 @@
   <div class="df jcb mb60 mhn10">
     <div class="w40 ph10">
       <h3 class="ttu mb30">Newsletter</h3>
-      <form class="form x df" action="/.netlify/functions/newsletter">
-        <input
-          class="form__input x bb pv5"
-          name="email"
-          type="email"
-          placeholder="Email address"
-        >
-        <button class="form__btn bb pv5 ph15" type="submit" aria-label="submit">
-          <div class="form__btn__icon">
-            {% include 'arrow-right.njk' %}
-          </div>
-        </button>
-      </form>
+      {% include 'signup.njk' %}
     </div>
     <div class="w50 ph10">
       <h3 class="ttu mb20">Contact</h3>
       <div class="df mhn10 mb30">
         <div class="w50 ph10">
-          <h4 class="mb10">New York</h4>
+          {# <h4 class="mb10">New York</h4> #}
           <p>79 West St.</p>
           <p>Brooklyn, NY 11222</p>
         </div>

@@ -1,7 +1,7 @@
 import Highway from '@dogstudio/highway'
 import choozy from 'choozy'
 import gsap from 'gsap'
-import { rect, round, map } from '@selfaware/martha'
+import { rect, round, map, index } from '@selfaware/martha'
 import app from '@/app'
 
 class ToProject extends Highway.Transition {
@@ -27,7 +27,8 @@ class ToProject extends Highway.Transition {
     let max = 1.5
     let duration = round(map(Math.abs(y), 0, app.getState().wh, min, max), 100)
 
-    tl.set(to.refs.title, { y })
+    tl.set(trigger, { autoAlpha: 0 })
+      .set(to.refs.title, { y })
       .set(to.refs.content, { y: y + 100, autoAlpha: 0 })
       .set(to, { autoAlpha: 1 })
       .to(
