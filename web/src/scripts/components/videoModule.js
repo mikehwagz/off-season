@@ -3,9 +3,10 @@ import createWave from '@/lib/wave'
 import { on } from '@selfaware/martha'
 import choozy from 'choozy'
 import inview from '@/util/inview'
+import gsap from 'gsap'
 
 export default component((node, ctx) => {
-  let { video, mute, waveWrap } = choozy(node)
+  let { video, mute, muteText, waveWrap } = choozy(node)
 
   let wave = createWave(waveWrap)
 
@@ -42,9 +43,15 @@ export default component((node, ctx) => {
     setMuted(!video.muted)
   }
 
-  function setMuted(state) {
-    video.muted = state
-    state ? wave.off() : wave.on()
+  function setMuted(muted) {
+    video.muted = muted
+    if (muted) {
+      wave.off()
+      gsap.set(muteText, { yPercent: 0 })
+    } else {
+      wave.on()
+      gsap.set(muteText, { yPercent: -120 })
+    }
   }
 
   return offClick

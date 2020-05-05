@@ -1,10 +1,18 @@
 .video {
   &__mute {
     outline: unset;
-  }
 
-  &__wave {
-    height: 2rem;
-    width: 2rem;
+    &__text {
+      transition: transform 0.3s $ease-out-quint;
+
+      &--2 {
+        transform: translateY(120%);
+      }
+    }
+
+    &__wave {
+      height: 2rem;
+      width: 2rem;
+    }
   }
 }
