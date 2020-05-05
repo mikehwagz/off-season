@@ -19,6 +19,9 @@ export default component((node, ctx) => {
           ease: 'quint.inOut',
           y: -10,
           autoAlpha: 0,
+          onComplete: () => {
+            window.destroyLoader()
+          },
         })
 
         gsap.fromTo(
