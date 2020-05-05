@@ -41,6 +41,7 @@ module.exports = function(eleventyConfig) {
   eleventyConfig.addShortcode('classNames', (...all) => cx(all))
 
   eleventyConfig.addPassthroughCopy({ 'src/assets/icons': '/' })
+  eleventyConfig.addPassthroughCopy({ 'src/assets/videos': '/' })
 
   return {
     dir: {

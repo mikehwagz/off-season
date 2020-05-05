@@ -1,0 +1,10 @@
+.video {
+  &__mute {
+    outline: unset;
+  }
+
+  &__wave {
+    height: 2rem;
+    width: 2rem;
+  }
+}

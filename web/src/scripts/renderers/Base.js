@@ -36,7 +36,9 @@ class Base extends Highway.Renderer {
   }
 
   tick = () => {
-    app.emit('tick')
+    app.emit('tick', ({ t }) => ({
+      t: t + 1,
+    }))
   }
 
   mount = () => {

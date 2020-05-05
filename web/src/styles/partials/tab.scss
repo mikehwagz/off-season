@@ -15,11 +15,18 @@
     &::before {
       content: '';
       display: inline-block;
-      width: 2rem;
-      height: 2rem;
+      width: 1.9rem;
+      height: 1.9rem;
+      border: 1px solid $black;
       border-radius: 50%;
-      background-color: $black;
+      background-color: $gray;
       margin-right: 1rem;
+      transition: background-color 0.2s ease;
+
+      .tab:hover &,
+      .fg1 & {
+        background-color: $black;
+      }
     }
   }
 }
