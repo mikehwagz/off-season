@@ -7,8 +7,10 @@ class Base extends Highway.Renderer {
   onFirstLoad() {
     console.log('onFirstLoad')
 
-    // broadcast resize event
+    // broadcast global events
     on(window, 'resize', this.resize)
+    on(window, 'focus', this.focus)
+    on(window, 'blur', this.blur)
 
     // setup render loop
     gsap.ticker.add(this.tick)
@@ -33,6 +35,14 @@ class Base extends Highway.Renderer {
 
   resize = () => {
     app.emit('resize', size())
+  }
+
+  focus = () => {
+    app.emit('focus')
+  }
+
+  blur = () => {
+    app.emit('blur')
   }
 
   tick = () => {
