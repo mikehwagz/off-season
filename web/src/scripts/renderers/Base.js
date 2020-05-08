@@ -5,8 +5,6 @@ import app from '@/app'
 
 class Base extends Highway.Renderer {
   onFirstLoad() {
-    console.log('onFirstLoad')
-
     // broadcast global events
     on(window, 'resize', this.resize)
     on(window, 'focus', this.focus)
