@@ -7,6 +7,7 @@ import badge from '@/components/badge'
 import wave from '@/components/wave'
 import signup from '@/components/signup'
 import videoModule from '@/components/videoModule'
+import clock from '@/components/clock'
 
 const components = {
   mark,
@@ -15,6 +16,7 @@ const components = {
   wave,
   signup,
   videoModule,
+  clock,
 }
 
 const state = {
