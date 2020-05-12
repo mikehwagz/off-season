@@ -12,7 +12,7 @@ export default component((node, ctx) => {
   let cy = 0
   let mx = 20
   let my = 10
-  let ease = 0.1
+  let ease = 0.075
 
   on(window, 'mousemove', ({ clientX, clientY }) => {
     tx = clientX
