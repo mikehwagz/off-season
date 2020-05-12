@@ -6,6 +6,7 @@ import Base from '@/renderers/Base'
 // transitions
 import Instant from '@/transitions/Instant'
 import ToProject from '@/transitions/ToProject'
+import Tab from '@/transitions/Tab'
 
 const H = new Highway.Core({
   renderers: {
@@ -15,6 +16,7 @@ const H = new Highway.Core({
     default: Instant,
     contextual: {
       toProject: ToProject,
+      tab: Tab,
     },
   },
 })

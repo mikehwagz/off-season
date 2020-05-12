@@ -11,22 +11,20 @@
     color: $black;
     display: flex;
     align-items: baseline;
+  }
 
-    &::before {
-      content: '';
-      display: inline-block;
-      width: 1.9rem;
-      height: 1.9rem;
-      border: 1px solid $black;
-      border-radius: 50%;
-      background-color: $gray;
-      margin-right: 1rem;
-      transition: background-color 0.2s ease;
+  &__dot {
+    width: 1.9rem;
+    height: 1.9rem;
+    border: 1px solid $black;
+    border-radius: 50%;
+    background-color: $gray;
+    margin-right: 1rem;
+    transition: background-color 0.2s ease;
 
-      .tab:hover &,
-      .fg1 & {
-        background-color: $black;
-      }
+    .tab:hover &,
+    .fg1 & {
+      background-color: $black;
     }
   }
 }
