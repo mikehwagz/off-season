@@ -1,11 +1,10 @@
 import Highway from '@dogstudio/highway'
 import choozy from 'choozy'
 import gsap from 'gsap'
-import { rect, round, map, has, index } from '@selfaware/martha'
-import app from '@/app'
+import { rect, has, index } from '@selfaware/martha'
 
 class Tab extends Highway.Transition {
-  in({ trigger, from, to, done }) {
+  in({ from, to, done }) {
     from.refs = choozy(from)
     to.refs = choozy(to)
 
@@ -30,16 +29,13 @@ class Tab extends Highway.Transition {
 
     if (direction < 0) {
       tl.set(from, { zIndex: 1 })
+        .set(from.refs.scroll, { willChange: 'transform' })
+        .set(from.refs.tabs.slice(to.index + 1, from.index + 1), {
+          willChange: 'transform',
+        })
         .set(to.refs.tabs.slice(to.index + 1), { autoAlpha: 0 })
-        .to(
-          from.refs.dots[from.index],
-          {
-            backgroundColor: '#f1f1f1',
-            duration: 0.6,
-            ease: 'expo',
-          },
-          'a',
-        )
+        .set(from.refs.dots[to.index], { backgroundColor: '#000' })
+        .set(from.refs.dots[from.index], { backgroundColor: '#f1f1f1' })
         .to(
           from.refs.scroll,
           {
@@ -63,8 +59,11 @@ class Tab extends Highway.Transition {
       tl.set(from.refs.tabs.slice(from.index + 1, to.index + 1), {
         autoAlpha: 0,
       })
-        .set(to.refs.scroll, { x: navItemRect.width })
-        .set(to.refs.tabs.slice(from.index + 1, to.index + 1), { x })
+        .set(to.refs.scroll, { x: navItemRect.width, willChange: 'transform' })
+        .set(to.refs.tabs.slice(from.index + 1, to.index + 1), {
+          x,
+          willChange: 'transform',
+        })
         .set(to.refs.navItems[from.index], { autoAlpha: 0 })
         .to(
           to.refs.navItems[from.index],
@@ -116,7 +115,7 @@ class Tab extends Highway.Transition {
     tl.restart()
   }
 
-  out({ trigger, done }) {
+  out({ done }) {
     done()
   }
 }
