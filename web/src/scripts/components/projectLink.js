@@ -2,7 +2,7 @@ import { component } from 'picoapp'
 import { on } from '@selfaware/martha'
 import gsap from 'gsap'
 
-export default component((node, ctx) => {
+export default component((node) => {
   let thumbs = document.querySelectorAll('.js-thumb')
   let links = document.querySelectorAll('.js-links')
 
