@@ -7,12 +7,30 @@ export default () =>
     .title('Content')
     .items([
       S.listItem()
-        .title('Configuration')
+        .title('Homepage')
+        .icon(() => <Emoji style={{ fontSize: 30 }} text="🏡" />)
+        .child(
+          S.editor()
+            .title('Homepage')
+            .schemaType('homepage')
+            .documentId('homepage'),
+        ),
+      S.listItem()
+        .title('Settings')
         .icon(() => <Emoji style={{ fontSize: 30 }} text="🌎" />)
         .child(
           S.editor()
-            .title('Config')
+            .title('Settings')
             .schemaType('config')
             .documentId('config'),
         ),
+      S.divider(),
+      S.listItem()
+        .title('Projects')
+        .icon(() => <Emoji style={{ fontSize: 30 }} text="🎨" />)
+        .child(S.documentTypeList('project').title('Projects')),
+      S.listItem()
+        .title('Pages')
+        .icon(() => <Emoji style={{ fontSize: 30 }} text="🗞️" />)
+        .child(S.documentTypeList('page').title('Pages')),
     ])

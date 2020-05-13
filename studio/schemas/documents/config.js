@@ -9,4 +9,5 @@ export default {
       type: 'seo',
     },
   ],
+  __experimental_actions: ['update', 'publish'],
 }
