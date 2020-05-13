@@ -16,6 +16,8 @@ class ToProject extends Highway.Transition {
       },
     })
 
+    let img = document.querySelector(`[data-id="${trigger.id}"]`)
+
     let first = rect(trigger).top
     let last = rect(to.refs.title).top
     let y = Math.round(first - last)
@@ -30,7 +32,7 @@ class ToProject extends Highway.Transition {
       .set(to.refs.content, { y: y + 100, autoAlpha: 0 })
       .set(to, { autoAlpha: 1 })
       .to(
-        from,
+        [from, img],
         {
           duration: duration * 0.5,
           autoAlpha: 0,
