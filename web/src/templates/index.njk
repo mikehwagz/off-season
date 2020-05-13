@@ -9,39 +9,20 @@ title: Work
 
   <div class="abs fill oy df fc jcb js-scroll">
     <ul class="pl115 pr200 pt35 mb100">
-      <li class="mb30 oh">
-        <a href="/project" class="dib sans f92 lh102 js-links" data-transition="toProject">Geographer</a>
-      </li>
-      <li class="mb30 oh">
-        <a href="/project" class="dib sans f92 lh102 js-links" data-transition="toProject">Teddy Geiger</a>
-      </li>
-      <li class="mb30 oh">
-        <a href="/project" class="dib sans f92 lh102 js-links" data-transition="toProject">James Calleo</a>
-      </li>
-      <li class="mb30 oh">
-        <a href="/project" class="dib sans f92 lh102 js-links" data-transition="toProject">Maggie Rogers</a>
-      </li>
-      <li class="mb30 oh">
-        <a href="/project" class="dib sans f92 lh102 js-links" data-transition="toProject">Adam Melchor</a>
-      </li>
-      <li class="mb30 oh">
-        <a href="/project" class="dib sans f92 lh102 js-links" data-transition="toProject">Plastic Picnic</a>
-      </li>
-      <li class="mb30 oh">
-        <a href="/project" class="dib sans f92 lh102 js-links" data-transition="toProject">Thutmose</a>
-      </li>
-      <li class="mb30 oh">
-        <a href="/project" class="dib sans f92 lh102 js-links" data-transition="toProject">The Tallest Man on Earth</a>
-      </li>
-      <li class="mb30 oh">
-        <a href="/project" class="dib sans f92 lh102 js-links" data-transition="toProject">Arlie</a>
-      </li>
-      <li class="mb30 oh">
-        <a href="/project" class="dib sans f92 lh102 js-links" data-transition="toProject">Whitney</a>
-      </li>
-      <li class="mb30 oh">
-        <a href="/project" class="dib sans f92 lh102 js-links" data-transition="toProject">Real Estate</a>
-      </li>
+      {% for project in projects %}
+        <li class="mb30 oh">
+          <style>#{{ project.slug }}:hover { color: {{ project.themeColor }} }</style>
+          <a
+            id="{{ project.slug }}"
+            class="dib sans f92 lh102 js-links"
+            href="/project/{{ project.slug }}"
+            data-transition="toProject"
+            data-component="projectLink"
+          >
+            {{ project.title }}
+          </a>
+        </li>
+      {% endfor %}
     </ul>
 
     {% include 'footer.njk' %}

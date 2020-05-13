@@ -8,6 +8,7 @@ import wave from '@/components/wave'
 import signup from '@/components/signup'
 import videoModule from '@/components/videoModule'
 import clock from '@/components/clock'
+import projectLink from '@/components/projectLink'
 
 const components = {
   mark,
@@ -17,6 +18,7 @@ const components = {
   signup,
   videoModule,
   clock,
+  projectLink,
 }
 
 const state = {

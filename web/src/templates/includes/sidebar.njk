@@ -11,5 +11,17 @@
     <div class="ro bg-gray pv50 ph35">
       {% include 'mark.njk' %}
     </div>
+
+    {% for project in projects %}
+      <div class="ro">
+        <img
+          data-id="{{ project.slug }}"
+          class="x y o-cover js-thumb"
+          style="opacity: 0; visibility: hidden;"
+          src="{{ project.thumbnail.url }}"
+          alt="{{ project.thumbnail.altText }}"
+        />
+      </div>
+    {% endfor %}
   </div>
 </div>
