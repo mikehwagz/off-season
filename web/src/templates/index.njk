@@ -8,13 +8,13 @@ title: Work
   {% include 'nav.njk' %}
 
   <div class="abs fill oy df fc jcb js-scroll">
-    <ul class="pl115 pr200 pt35 mb100">
+    <ul class="pl115 pr200 pt20 mb100">
       {% for project in projects %}
-        <li class="mb30 oh">
+        <li class="oh">
           <style>#{{ project.slug }}:hover { color: {{ project.themeColor }} }</style>
           <a
             id="{{ project.slug }}"
-            class="dib sans f92 lh102 js-links"
+            class="dib sans f92 lh102 pv15 js-links"
             href="/project/{{ project.slug }}"
             data-transition="toProject"
             data-component="projectLink"
