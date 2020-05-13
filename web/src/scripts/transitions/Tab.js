@@ -13,7 +13,7 @@ class Tab extends Highway.Transition {
 
     let direction = to.index - from.index
 
-    let duration = 3
+    let duration = 1.2
 
     let tl = new gsap.timeline({
       onComplete: () => {

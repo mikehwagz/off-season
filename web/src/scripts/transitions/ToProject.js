@@ -9,8 +9,6 @@ class ToProject extends Highway.Transition {
     from.refs = choozy(from)
     to.refs = choozy(to)
 
-    to.refs.title.textContent = this.title
-
     let tl = new gsap.timeline({
       onComplete: () => {
         from.remove()
