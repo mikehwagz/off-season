@@ -11,13 +11,13 @@ title: Work
     <ul class="pl115 pr200 pt20 mb100">
       {% for project in projects %}
         <li class="oh">
-          <style>#{{ project.slug }}:hover { color: {{ project.themeColor }} }</style>
           <a
             id="{{ project.slug }}"
             class="dib sans f92 lh102 pv15 js-links"
             href="/project/{{ project.slug }}"
             data-transition="toProject"
             data-component="projectLink"
+            data-color="{{ project.themeColor }}"
           >
             {{ project.title }}
           </a>
