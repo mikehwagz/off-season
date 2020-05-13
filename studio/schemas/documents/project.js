@@ -10,6 +10,7 @@ export default {
     },
     {
       title: 'Slug',
+      description: 'Used in the URL for the project',
       name: 'slug',
       type: 'slug',
       options: {
@@ -67,6 +68,13 @@ export default {
       title: 'Content Modules',
       name: 'contentModules',
       type: 'contentModules',
+    },
+    {
+      title: 'Add password protection?',
+      description:
+        'Set a password to make this project private, or leave it blank to keep it public',
+      name: 'password',
+      type: 'string',
     },
   ],
   preview: {

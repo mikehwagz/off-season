@@ -7,7 +7,7 @@ export default {
       title: 'Selected Projects',
       name: 'selectedProjects',
       type: 'array',
-      of: [{ type: 'project' }],
+      of: [{ type: 'reference', to: [{ type: 'project' }] }],
     },
   ],
   __experimental_actions: ['update', 'publish'],
