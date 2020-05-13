@@ -7,18 +7,22 @@ export default component((node) => {
   let links = document.querySelectorAll('.js-links')
 
   let offEnter = on(node, 'mouseenter', () => {
-    links.forEach((link) => {
-      gsap.set(link, {
-        color: link === node ? node.dataset.color : '#000',
-      })
-    })
+    gsap.set(node, { color: node.dataset.color })
 
     thumbs.forEach((img) => {
       gsap.set(img, {
-        autoAlpha: img.dataset.id === node.getAttribute('id') ? 1 : 0,
+        autoAlpha: img.dataset.id === node.id ? 1 : 0,
       })
     })
   })
 
-  return offEnter
+  let offLeave = on(node, 'mouseleave', () => {
+    gsap.set(links, { color: '#000' })
+    gsap.set(thumbs, { autoAlpha: 0 })
+  })
+
+  return () => {
+    offEnter()
+    offLeave()
+  }
 })
