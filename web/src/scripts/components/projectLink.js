@@ -6,23 +6,27 @@ export default component((node) => {
   let thumbs = document.querySelectorAll('.js-thumb')
   let links = document.querySelectorAll('.js-links')
 
-  let offEnter = on(node, 'mouseenter', () => {
-    gsap.set(node, { color: node.dataset.color })
+  let offEnter = on(node, 'mouseenter', enter)
+  let offFocus = on(node, 'focus', enter)
+  let offLeave = on(node, 'mouseleave', leave)
+  let offBlur = on(node, 'blur', leave)
 
+  return () => {
+    offEnter()
+    offFocus()
+    offLeave()
+    offBlur()
+  }
+
+  function enter() {
     thumbs.forEach((img) => {
       gsap.set(img, {
         autoAlpha: img.dataset.id === node.id ? 1 : 0,
       })
     })
-  })
+  }
 
-  let offLeave = on(node, 'mouseleave', () => {
-    gsap.set(links, { color: '#000' })
+  function leave() {
     gsap.set(thumbs, { autoAlpha: 0 })
-  })
-
-  return () => {
-    offEnter()
-    offLeave()
   }
 })

@@ -13,6 +13,8 @@ class Tab extends Highway.Transition {
 
     let direction = to.index - from.index
 
+    let duration = 3
+
     let tl = new gsap.timeline({
       onComplete: () => {
         from.remove()
@@ -40,7 +42,7 @@ class Tab extends Highway.Transition {
           from.refs.scroll,
           {
             x,
-            duration: 1.2,
+            duration,
             ease: 'expo.inOut',
           },
           'a',
@@ -49,7 +51,7 @@ class Tab extends Highway.Transition {
           from.refs.tabs.slice(to.index + 1, from.index + 1),
           {
             x,
-            duration: 1.2,
+            duration,
             ease: 'expo.inOut',
           },
           'a',
@@ -59,7 +61,7 @@ class Tab extends Highway.Transition {
       tl.set(from.refs.tabs.slice(from.index + 1, to.index + 1), {
         autoAlpha: 0,
       })
-        .set(to.refs.scroll, { x: navItemRect.width, willChange: 'transform' })
+        .set(to.refs.scroll, { x, willChange: 'transform' })
         .set(to.refs.tabs.slice(from.index + 1, to.index + 1), {
           x,
           willChange: 'transform',
@@ -69,7 +71,7 @@ class Tab extends Highway.Transition {
           to.refs.navItems[from.index],
           {
             autoAlpha: 1,
-            duration: 0.6,
+            duration: duration * 0.5,
             ease: 'expo',
           },
           'a',
@@ -81,7 +83,7 @@ class Tab extends Highway.Transition {
           ].flat(),
           {
             x: 0,
-            duration: 1.2,
+            duration,
             ease: 'expo.inOut',
           },
           'a',
@@ -95,7 +97,7 @@ class Tab extends Highway.Transition {
         from,
         {
           autoAlpha: 0,
-          duration: 1.2,
+          duration,
           ease: 'expo',
         },
         'a',
@@ -104,11 +106,11 @@ class Tab extends Highway.Transition {
         to.refs.links,
         {
           yPercent: 0,
-          duration: 1.2,
+          duration,
           ease: 'expo',
-          stagger: 0.065,
+          stagger: duration / 18,
         },
-        'a+=0.6',
+        `a+=${duration * 0.5}`,
       )
     }
 

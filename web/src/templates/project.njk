@@ -1,6 +1,12 @@
 ---
 layout: base.njk
-title: Project
+permalink: /project/{{ project.slug }}/
+pagination:
+  alias: project
+  data: projects
+  size: 1
+renderData:
+  title: "{{ project.title }}"
 ---
 <div class="abs fill" data-router-view="default">
 
@@ -8,8 +14,8 @@ title: Project
   {% include 'nav.njk' %}
 
   <div class="abs fill oy js-scroll">
-    <div class="pl115 pr165 pt35">
-      <h1 class="sans f92 lh102 wct mb35 js-title">Project</h1>
+    <div class="pl115 pr165 pt20">
+      <h1 class="sans f92 lh102 wct pt15 mb35 js-title" style="color: {{ project.themeColor }}">{{ project.title }}</h1>
       <div class="pr115 wcto js-content">
         <div class="f24 lh125 mb50">
           <p>Design direction for everything around Clairo's 2019 album release Immunity. We created a system that was used on: packaging, merchandise and tour promotion.</p>
