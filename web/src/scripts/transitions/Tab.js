@@ -8,92 +8,103 @@ class Tab extends Highway.Transition {
     from.refs = choozy(from)
     to.refs = choozy(to)
 
-    from.index = activeTabIndex(from.refs.navItems)
-    to.index = activeTabIndex(to.refs.navItems)
+    from.index = this.activeTabIndex(from.refs.navItems)
+    to.index = this.activeTabIndex(to.refs.navItems)
 
-    let direction = to.index - from.index
-
-    let duration = 1.2
-
-    let tl = new gsap.timeline({
+    this.tl = new gsap.timeline({
       onComplete: () => {
         from.remove()
         done()
       },
     })
 
-    let navItemRect = rect(to.refs.navItems[to.index])
-    let tabRect = rect(to.refs.tabs[to.index])
-    let x = navItemRect.width - tabRect.width
+    this.tl.set(to, { autoAlpha: 1 })
+    this.tl.set(from.refs.scroll, { overflow: 'hidden' })
 
-    tl.set(to, { autoAlpha: 1 })
-    tl.set(from.refs.scroll, { overflow: 'hidden' })
+    let direction = to.index - from.index
 
-    if (direction < 0) {
-      tl.set(from, { zIndex: 1 })
-        .set(from.refs.scroll, { willChange: 'transform' })
-        .set(from.refs.tabs.slice(to.index + 1, from.index + 1), {
-          willChange: 'transform',
-        })
-        .set(to.refs.tabs.slice(to.index + 1), { autoAlpha: 0 })
-        .set(from.refs.dots[to.index], { backgroundColor: '#000' })
-        .set(from.refs.dots[from.index], { backgroundColor: '#f1f1f1' })
-        .to(
-          from.refs.scroll,
-          {
-            x,
-            duration,
-            ease: 'expo.inOut',
-          },
-          'a',
-        )
-        .to(
-          from.refs.tabs.slice(to.index + 1, from.index + 1),
-          {
-            x,
-            duration,
-            ease: 'expo.inOut',
-          },
-          'a',
-        )
-        .set(to.refs.tabs.slice(to.index + 1), { autoAlpha: 1 })
-    } else if (direction > 0) {
-      tl.set(from.refs.tabs.slice(from.index + 1, to.index + 1), {
+    this[
+      direction > 0 ? 'toRight' : direction < 0 ? 'toLeft' : 'projectToIndex'
+    ]({ from, to, duration: 1.2 })
+  }
+
+  out({ done }) {
+    done()
+  }
+
+  toRight({ from, to, duration }) {
+    let x = this.getX(to)
+    this.tl
+      .set(from.refs.tabs.slice(from.index + 1, to.index + 1), {
         autoAlpha: 0,
       })
-        .set(to.refs.scroll, { x, willChange: 'transform' })
-        .set(to.refs.tabs.slice(from.index + 1, to.index + 1), {
+      .set(to.refs.scroll, { x, willChange: 'transform' })
+      .set(to.refs.tabs.slice(from.index + 1, to.index + 1), {
+        x,
+        willChange: 'transform',
+      })
+      .set(to.refs.navItems[from.index], { autoAlpha: 0 })
+      .to(
+        to.refs.navItems[from.index],
+        {
+          autoAlpha: 1,
+          duration: duration * 0.5,
+          ease: 'expo',
+        },
+        'a',
+      )
+      .to(
+        [
+          to.refs.tabs.slice(from.index + 1, to.index + 1),
+          to.refs.scroll,
+        ].flat(),
+        {
+          x: 0,
+          duration,
+          ease: 'expo.inOut',
+        },
+        'a',
+      )
+  }
+
+  toLeft({ from, to, duration }) {
+    let x = this.getX(to)
+    this.tl
+      .set(from, { zIndex: 1 })
+      .set(from.refs.scroll, { willChange: 'transform' })
+      .set(from.refs.tabs.slice(to.index + 1, from.index + 1), {
+        willChange: 'transform',
+      })
+      .set(to.refs.tabs.slice(to.index + 1), { autoAlpha: 0 })
+      .set(from.refs.dots[to.index], { backgroundColor: '#000' })
+      .set(from.refs.dots[from.index], { backgroundColor: '#f1f1f1' })
+      .to(
+        from.refs.scroll,
+        {
           x,
-          willChange: 'transform',
-        })
-        .set(to.refs.navItems[from.index], { autoAlpha: 0 })
-        .to(
-          to.refs.navItems[from.index],
-          {
-            autoAlpha: 1,
-            duration: duration * 0.5,
-            ease: 'expo',
-          },
-          'a',
-        )
-        .to(
-          [
-            to.refs.tabs.slice(from.index + 1, to.index + 1),
-            to.refs.scroll,
-          ].flat(),
-          {
-            x: 0,
-            duration,
-            ease: 'expo.inOut',
-          },
-          'a',
-        )
-    } else {
-      tl.set(to.refs.links, {
-        transformOrigin: 'top left',
+          duration,
+          ease: 'expo.inOut',
+        },
+        'a',
+      )
+      .to(
+        from.refs.tabs.slice(to.index + 1, from.index + 1),
+        {
+          x,
+          duration,
+          ease: 'expo.inOut',
+        },
+        'a',
+      )
+      .set(to.refs.tabs.slice(to.index + 1), { autoAlpha: 1 })
+  }
+
+  projectToIndex({ from, to, duration }) {
+    this.tl
+      .set(to.refs.links, {
         yPercent: 100,
       })
-      tl.to(
+      .to(
         from,
         {
           autoAlpha: 0,
@@ -102,7 +113,7 @@ class Tab extends Highway.Transition {
         },
         'a',
       )
-      tl.to(
+      .to(
         to.refs.links,
         {
           yPercent: 0,
@@ -112,18 +123,17 @@ class Tab extends Highway.Transition {
         },
         `a+=${duration * 0.5}`,
       )
-    }
-
-    tl.restart()
   }
 
-  out({ done }) {
-    done()
+  activeTabIndex(items) {
+    return index(items.find((el) => has(el, 'fg1')))
+  }
+
+  getX(to) {
+    let navItemRect = rect(to.refs.navItems[to.index])
+    let tabRect = rect(to.refs.tabs[to.index])
+    return navItemRect.width - tabRect.width
   }
 }
 
 export default Tab
-
-function activeTabIndex(items) {
-  return index(items.find((el) => has(el, 'fg1')))
-}

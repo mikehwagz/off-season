@@ -1,14 +1,16 @@
 <nav class="abs fill df z1 pen js-nav">
   {% for item in nav %}
     <div 
-      class="{% 
-        classNames
-          'js-navItems',
-          'fg1' if active == loop.index0
+      class="{% classNames
+        'js-navItems',
+        'fg1' if active == loop.index0
       %}"
     >
       <a
-        class="{% classNames 'tab db pea bg-gray js-tabs', '' if loop.first else 'bl' %}" 
+        class="{% classNames
+          'tab db pea js-tabs',
+          '' if loop.first else 'bl bg-gray'
+        %}" 
         href="{{ item.href }}"
         data-transition="tab"
       >
