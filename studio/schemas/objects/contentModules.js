@@ -10,7 +10,7 @@ export default {
     { type: 'slideshow' },
     { type: 'fullBleed' },
     { type: 'heading' },
-    { type: 'basicText' },
+    { type: 'moduleText' },
     { type: 'colophon' },
     { type: 'list' },
     { type: 'quote' },

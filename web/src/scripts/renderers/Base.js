@@ -24,11 +24,11 @@ class Base extends Highway.Renderer {
   }
 
   onEnterCompleted() {
-    add(document.querySelector('.shield'), 'pen')
+    // add(document.querySelector('.shield'), 'pen')
   }
 
   onLeave() {
-    remove(document.querySelector('.shield'), 'pen')
+    // remove(document.querySelector('.shield'), 'pen')
 
     this.unmount()
   }

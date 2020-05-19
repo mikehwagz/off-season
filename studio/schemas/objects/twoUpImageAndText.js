@@ -20,8 +20,8 @@ export default {
       options: {
         layout: 'radio',
         list: [
-          { title: 'Image / Text', value: 1 },
-          { title: 'Text / Image', value: -1 },
+          { title: 'Image / Text', value: '1' },
+          { title: 'Text / Image', value: '-1' },
         ],
       },
     },

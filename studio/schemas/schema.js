@@ -10,6 +10,7 @@ import seo from './objects/seo'
 import a11yImage from './objects/a11yImage'
 import basicText from './objects/basicText'
 import shortText from './objects/shortText'
+import moduleText from './objects/moduleText'
 import caption from './objects/caption'
 import hyperlink from './objects/hyperlink'
 import colophonItem from './objects/colophonItem'
@@ -33,6 +34,7 @@ const objects = [
   hyperlink,
   basicText,
   shortText,
+  moduleText,
   caption,
   colophonItem,
   colophon,
