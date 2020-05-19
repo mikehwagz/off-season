@@ -25,14 +25,14 @@ class Tab extends Highway.Transition {
 
     this[
       direction > 0 ? 'toRight' : direction < 0 ? 'toLeft' : 'projectToIndex'
-    ]({ from, to, duration: 1.2 })
+    ]({ from, to, duration: 0.8, ease: 'expo' })
   }
 
   out({ done }) {
     done()
   }
 
-  toRight({ from, to, duration }) {
+  toRight({ from, to, duration, ease }) {
     let x = this.getX(to)
     this.tl
       .set(from.refs.tabs.slice(from.index + 1, to.index + 1), {
@@ -49,7 +49,7 @@ class Tab extends Highway.Transition {
         {
           autoAlpha: 1,
           duration: duration * 0.5,
-          ease: 'expo',
+          ease,
         },
         'a',
       )
@@ -61,13 +61,13 @@ class Tab extends Highway.Transition {
         {
           x: 0,
           duration,
-          ease: 'expo.inOut',
+          ease: `${ease}.inOut`,
         },
         'a',
       )
   }
 
-  toLeft({ from, to, duration }) {
+  toLeft({ from, to, duration, ease }) {
     let x = this.getX(to)
     this.tl
       .set(from, { zIndex: 1 })
@@ -83,7 +83,7 @@ class Tab extends Highway.Transition {
         {
           x,
           duration,
-          ease: 'expo.inOut',
+          ease: `${ease}.inOut`,
         },
         'a',
       )
@@ -92,14 +92,14 @@ class Tab extends Highway.Transition {
         {
           x,
           duration,
-          ease: 'expo.inOut',
+          ease: `${ease}.inOut`,
         },
         'a',
       )
       .set(to.refs.tabs.slice(to.index + 1), { autoAlpha: 1 })
   }
 
-  projectToIndex({ from, to, duration }) {
+  projectToIndex({ from, to, duration, ease }) {
     this.tl
       .set(to.refs.links, {
         yPercent: 100,
@@ -109,7 +109,7 @@ class Tab extends Highway.Transition {
         {
           autoAlpha: 0,
           duration,
-          ease: 'expo',
+          ease,
         },
         'a',
       )
@@ -118,7 +118,7 @@ class Tab extends Highway.Transition {
         {
           yPercent: 0,
           duration,
-          ease: 'expo',
+          ease,
           stagger: duration / 18,
         },
         `a+=${duration * 0.5}`,

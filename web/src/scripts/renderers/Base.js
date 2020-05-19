@@ -1,5 +1,5 @@
 import Highway from '@dogstudio/highway'
-import { on, size } from '@selfaware/martha'
+import { on, add, remove, size } from '@selfaware/martha'
 import gsap from 'gsap'
 import app from '@/app'
 
@@ -23,9 +23,13 @@ class Base extends Highway.Renderer {
     this.mount()
   }
 
-  onEnterCompleted() {}
+  onEnterCompleted() {
+    add(document.querySelector('.shield'), 'pen')
+  }
 
   onLeave() {
+    remove(document.querySelector('.shield'), 'pen')
+
     this.unmount()
   }
 
