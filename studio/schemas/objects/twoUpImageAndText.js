@@ -1,3 +1,5 @@
+import toPlainText from '../../toPlainText'
+
 export default {
   title: 'Two-Up: Image & Text',
   name: 'twoUpImageAndText',
@@ -26,4 +28,19 @@ export default {
       },
     },
   ],
+  preview: {
+    select: {
+      text: 'text',
+      media: 'image.image',
+    },
+    prepare: ({ text, ...selection }) => ({
+      ...selection,
+      title: 'Two-up: Image & Text',
+      subtitle: text
+        ? toPlainText(text)
+            .slice(0, 30)
+            .concat('…')
+        : '',
+    }),
+  },
 }

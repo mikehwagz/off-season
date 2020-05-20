@@ -8,11 +8,12 @@ import project from './documents/project'
 
 import seo from './objects/seo'
 import a11yImage from './objects/a11yImage'
+import hyperlink from './objects/hyperlink'
+import emailLink from './objects/emailLink'
 import basicText from './objects/basicText'
 import shortText from './objects/shortText'
 import moduleText from './objects/moduleText'
 import caption from './objects/caption'
-import hyperlink from './objects/hyperlink'
 import colophonItem from './objects/colophonItem'
 import colophon from './objects/colophon'
 import fullBleed from './objects/fullBleed'
@@ -32,6 +33,7 @@ const objects = [
   seo,
   a11yImage,
   hyperlink,
+  emailLink,
   basicText,
   shortText,
   moduleText,

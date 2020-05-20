@@ -15,6 +15,11 @@ export default {
             name: 'hyperlink',
             type: 'hyperlink',
           },
+          {
+            title: 'Email Link',
+            name: 'emailLink',
+            type: 'emailLink',
+          },
         ],
       },
     },

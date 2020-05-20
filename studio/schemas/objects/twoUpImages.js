@@ -1,3 +1,5 @@
+import toPlainText from '../../toPlainText'
+
 export default {
   title: 'Two-Up: Images',
   name: 'twoUpImages',
@@ -19,4 +21,15 @@ export default {
       type: 'caption',
     },
   ],
+  preview: {
+    select: {
+      caption: 'caption',
+      media: 'image1.image',
+    },
+    prepare: ({ caption, ...selection }) => ({
+      ...selection,
+      title: 'Two-up: Images',
+      subtitle: caption && caption.content ? toPlainText(caption.content) : '',
+    }),
+  },
 }

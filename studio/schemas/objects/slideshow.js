@@ -1,3 +1,5 @@
+import toPlainText from '../../toPlainText'
+
 export default {
   title: 'Slideshow',
   name: 'slideshow',
@@ -15,4 +17,15 @@ export default {
       type: 'caption',
     },
   ],
+  preview: {
+    select: {
+      caption: 'caption',
+      media: 'images.0.image',
+    },
+    prepare: ({ caption, ...selection }) => ({
+      ...selection,
+      title: 'Slideshow',
+      subtitle: caption && caption.content ? toPlainText(caption.content) : '',
+    }),
+  },
 }

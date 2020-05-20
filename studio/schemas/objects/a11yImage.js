@@ -2,6 +2,9 @@ export default {
   title: 'Image',
   name: 'a11yImage',
   type: 'object',
+  options: {
+    collapsible: true,
+  },
   fields: [
     {
       title: 'Image',

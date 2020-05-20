@@ -1,3 +1,7 @@
+import React from 'react'
+import Emoji from 'react-emoji-render'
+import toPlainText from '../../toPlainText'
+
 export default {
   title: 'Video & Caption',
   name: 'videoAndCaption',
@@ -21,4 +25,15 @@ export default {
       type: 'caption',
     },
   ],
+  preview: {
+    select: {
+      caption: 'caption',
+      poster: 'poster',
+    },
+    prepare: ({ caption, ...selection }) => ({
+      ...selection,
+      title: 'Video & Caption',
+      subtitle: caption && caption.content ? toPlainText(caption.content) : '',
+    }),
+  },
 }
