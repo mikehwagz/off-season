@@ -6,13 +6,11 @@ export default component((node) => {
 })
 
 function update(el) {
-  let d = new Date()
-  let h = pad(d.getHours())
-  let m = pad(d.getMinutes())
-  let s = pad(d.getSeconds())
-  el.innerHTML = `${h}:${m}:${s} ET`
+  el.innerHTML = `${getTime()} ET`
 }
 
-function pad(n) {
-  return n.toString().padStart(2, '0')
+function getTime() {
+  return new Date().toLocaleTimeString('en-GB', {
+    timeZone: 'America/New_York',
+  })
 }
