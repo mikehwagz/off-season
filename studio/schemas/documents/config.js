@@ -42,6 +42,11 @@ export default {
           type: 'string',
         },
         {
+          title: 'Newsletter Signup Success Message',
+          name: 'newsletterSuccessMessage',
+          type: 'string',
+        },
+        {
           title: 'Contact Heading',
           name: 'contactHeading',
           type: 'string',
@@ -65,6 +70,11 @@ export default {
           title: 'Instagram Handle',
           name: 'instagramHandle',
           type: 'string',
+        },
+        {
+          title: 'Spotify Link',
+          name: 'spotifyLink',
+          type: 'url',
         },
         {
           title: 'Copyright Text',

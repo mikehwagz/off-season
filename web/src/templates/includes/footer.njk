@@ -1,35 +1,40 @@
+{% set footer = site.footer %}
+
 <footer class="bt ph25 pt40 pb20 bg-gray rel z1 f24 lh125 rel">
   <div class="df jcb mb60 mhn10">
     <div class="w40 ph10">
-      <h3 class="ttu mb30">Newsletter</h3>
+      <h3 class="ttu mb30">{{ footer.newsletterHeading }}</h3>
       {% include 'signup.njk' %}
     </div>
     <div class="w50 ph10">
-      <h3 class="ttu mb20">Contact</h3>
+      <h3 class="ttu mb20">{{ footer.contactHeading }}</h3>
       <div class="df mhn10 mb30">
         <div class="w50 ph10">
-          {# <h4 class="mb10">New York</h4> #}
-          <p>79 West St.</p>
-          <p>Brooklyn, NY 11222</p>
+          <p>{{ footer.addressLine1 }}</p>
+          <p>{{ footer.addressLine2 }}</p>
         </div>
-        {# <div class="w50 ph10">
-          <h4 class="mb10">Nashville</h4>
-          <p>1012 Woodland St.</p>
-          <p>Nashville, TN 37206</p>
-        </div> #}
       </div>
       <div>
-        <a class="inline-link mr25" href="mailto:studio@offseasoncreative.com">Email</a>
+        <a class="inline-link mr25" href="mailto:{{ footer.emailAddress }}">Email</a>
         <a
-          class="inline-link"
-          href="https://instagram.com/offseasoncreative"
+          class="inline-link mr25"
+          href="https://instagram.com/{{ footer.instagramHandle }}"
           target="_blank"
           rel="noopener noreferrer"
         >Instagram</a>
+        <a
+          class="inline-link"
+          href="{{ footer.spotifyLink }}"
+          target="_blank"
+          rel="noopener noreferrer"
+        >Spotify</a>
       </div>
     </div>
   </div>
-  <p class="f18 lh166">© 2018 – 2020 Off Season Creative</p>
+  <p class="df aic">
+    <span class="dib f24 lh125 mr5">©</span>
+    <span class="dib f18 lh166">{{ footer.copyrightText }}</span>
+  </p>
   {# <div class="badge abs right bottom mr30 mb30 ba bg-gray br50 df fc jcb" data-component="badge">
     <p class="f22 mono tc ttu pt5 js-topText">Off Season</p>
     <p class="f22 mono tc ttu js-bottomText">Creative</p>

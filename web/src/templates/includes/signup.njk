@@ -8,7 +8,7 @@
       class="signup__input x bb pv5"
       name="email"
       type="email"
-      placeholder="Email address"
+      placeholder="{{ footer.newsletterPlaceholder }}"
       required
     >
     <button class="signup__submit bb pv5 ph15 js-submit" type="submit" aria-label="submit">
@@ -22,6 +22,6 @@
     class="signup__success abs fill df aic js-success"
     style="opacity: 0; visibility: hidden;"
   >
-    Thank you for subscribing
+    {{ footer.newsletterSuccessMessage }}
   </p>
 </div>

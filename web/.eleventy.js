@@ -3,6 +3,7 @@ const path = require('path')
 const util = require('util')
 const readFile = util.promisify(fs.readFile)
 const cx = require('nanoclass')
+const blocksToHtml = require(`@sanity/block-content-to-html`)
 
 // const imageUrlBuilder = require('@sanity/image-url')
 // const client = require('./src/util/client')
@@ -37,6 +38,10 @@ module.exports = function(eleventyConfig) {
   //     .auto('format')
   //     .url()
   // })
+
+  eleventyConfig.addShortcode('blocksToHtml', (blocks) =>
+    blocksToHtml({ blocks: blocks }),
+  )
 
   eleventyConfig.addShortcode('classNames', (...all) => cx(all))
 

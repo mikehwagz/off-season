@@ -13,7 +13,7 @@
     "build:eleventy": "eleventy --quiet",
     "start": "cross-env NODE_ENV=development npm-run-all clean build:webpack --parallel start:* serve",
     "start:webpack": "webpack -w",
-    "start:eleventy": "eleventy --quiet --watch"
+    "start:eleventy": "eleventy --watch"
   },
   "dependencies": {
     "@dogstudio/highway": "^2.2.1",
