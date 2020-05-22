@@ -11,6 +11,11 @@ export default {
       name: 'content',
       type: 'basicText',
     },
+    {
+      title: 'Use smaller margin bottom?',
+      name: 'isMarginSmall',
+      type: 'boolean',
+    },
   ],
   preview: {
     prepare: () => ({

@@ -24,6 +24,11 @@ export default {
       name: 'caption',
       type: 'caption',
     },
+    {
+      title: 'Use smaller margin bottom?',
+      name: 'isMarginSmall',
+      type: 'boolean',
+    },
   ],
   preview: {
     select: {

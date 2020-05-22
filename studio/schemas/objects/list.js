@@ -15,6 +15,11 @@ export default {
         layout: 'tags',
       },
     },
+    {
+      title: 'Use smaller margin bottom?',
+      name: 'isMarginSmall',
+      type: 'boolean',
+    },
   ],
   preview: {
     select: {

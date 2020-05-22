@@ -20,6 +20,11 @@ export default {
       description: 'Dash is prepended in the front-end',
       type: 'string',
     },
+    {
+      title: 'Use smaller margin bottom?',
+      name: 'isMarginSmall',
+      type: 'boolean',
+    },
   ],
   preview: {
     select: {

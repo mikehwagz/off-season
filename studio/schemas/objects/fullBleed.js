@@ -8,5 +8,10 @@ export default {
       name: 'image',
       type: 'a11yImage',
     },
+    {
+      title: 'Use smaller margin bottom?',
+      name: 'isMarginSmall',
+      type: 'boolean',
+    },
   ],
 }
