@@ -1,0 +1,10 @@
+---
+layout: base.njk
+---
+{% include 'sidebar.njk' %}
+
+<main class="fix right fill-y w75 bg-gray pt-nav">
+  <div class="rel x y" data-router-wrapper>
+    {{ content | safe }}
+  </div>
+</main>

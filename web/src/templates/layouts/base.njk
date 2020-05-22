@@ -11,18 +11,9 @@
 
       {% include 'header.njk' %}
 
-      {% include 'sidebar.njk' %}
-
-      <main class="fix right fill-y w75 bg-gray pt-nav">
-        <div class="rel x y" data-router-wrapper>
-          {{ content | safe }}
-        </div>
-      </main>
-      
-      {# <div class="shield fix fill pen"></div> #}
+      {{ content | safe }}
 
     </div>
-
 
     <script src="{% webpackAsset 'main.js' %}"></script>
 

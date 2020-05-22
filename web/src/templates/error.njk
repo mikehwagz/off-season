@@ -1,0 +1,18 @@
+---
+layout: base.njk
+title: Page not found
+permalink: 404.html
+---
+<main class="fix fill bg-gray pt-nav">
+  <div class="rel x y" data-router-wrapper>
+    <div class="error abs fill df jcc aic" data-router-view="default">
+      <div class="tc lh100 mb40">
+        <h1 class="error__title sans mb80">404</h1>
+        <a class="df jcc aic f24 m:f32 ttu" href="/" data-router-disabled>
+          <span>Take me back</span>
+          <span class="error__arrow db ml15 m:ml20">{% include 'arrowRight.njk' %}</span>
+        </a>
+      </div>
+    </div>
+  </div>
+</main>

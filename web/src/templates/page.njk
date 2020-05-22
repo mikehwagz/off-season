@@ -1,5 +1,5 @@
 ---
-layout: base.njk
+layout: baseSidebar.njk
 permalink: /{{ p.slug }}/
 pagination:
   alias: p
@@ -25,23 +25,24 @@ renderData:
       <div class="ph115 pt45">
         {% for module in p.contentModules %}
           {% set type = module._type %}
-          {% if type == 'moduleText' %}
-            <div class="mb100">
+          {% set mb = 'mb45' if module.isMarginSmall else 'mb100' %}
+          <div class="{% classNames 'mb20' if module._type == 'heading' else mb %}">
+            {% if type == 'moduleText' %}
               <div class="rte f24 lh125">
                 {% blocksToHtml module.content %}
               </div>
-            </div>
-          {% elif type == 'heading' %}
-            <h2 class="f24 lh100 ttu mb20">{{ module.text }}</h2>
-          {% elif type == 'list' %}
-            <ul class="df fw mb100 mhn5">
-              {% for item in module.items %}
-                <li class="third f24 lh141 ph5">{{ item }}</li>
-              {% endfor %}
-            </ul>
-          {% else %}
-            <p class="f24 sans mb100 ttu o20">{{ type }} Module</p>
-          {% endif %}
+            {% elif type == 'heading' %}
+              <h2 class="f24 lh100 ttu mb20">{{ module.text }}</h2>
+            {% elif type == 'list' %}
+              <ul class="df fw mhn5">
+                {% for item in module.items %}
+                  <li class="third f24 lh141 ph5">{{ item }}</li>
+                {% endfor %}
+              </ul>
+            {% else %}
+              <p class="f24 sans ttu o20">{{ type }} Module</p>
+            {% endif %}
+          </div>
         {% endfor %}
       </div>
     </div>

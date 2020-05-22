@@ -1,5 +1,6 @@
 module.exports.contentModules = `contentModules[] {
   _type,
+  isMarginSmall,
   _type == 'imageAndCaption' => {
     'caption': caption.content,
     'image': {

@@ -1,0 +1,13 @@
+.error {
+  &__title {
+    font-size: 34vw;
+  }
+
+  &__arrow {
+    width: 4rem;
+
+    @media (query('m')) {
+      width: 5rem;
+    }
+  }
+}
