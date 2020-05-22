@@ -42,3 +42,7 @@ a {
 [data-router-view] {
   @include hidden;
 }
+
+.max-vh100 {
+  max-height: 100vh;
+}

@@ -21,12 +21,12 @@ renderData:
     class="abs fill oy js-scroll"
     style="padding-left: {{ 5.5 * active }}rem; padding-right: {{ 5.5 * diff }}rem"
   >
-    <div class="x y bg-gray">
+    <div class="x bg-gray">
       <div class="ph115 pt45">
         {% for module in p.contentModules %}
           {% set type = module._type %}
-          {% set mb = 'mb45' if module.isMarginSmall else 'mb100' %}
-          <div class="{% classNames 'mb20' if module._type == 'heading' else mb %}">
+          {% set pb = 'pb45' if module.isMarginSmall else 'pb100' %}
+          <div class="{% classNames 'pb20' if module._type == 'heading' else pb %}">
             {% if type == 'moduleText' %}
               <div class="rte f24 lh125">
                 {% blocksToHtml module.content %}
@@ -39,6 +39,8 @@ renderData:
                   <li class="third f24 lh141 ph5">{{ item }}</li>
                 {% endfor %}
               </ul>
+            {% elif type == 'slideshow' %}
+              {% include 'slideshow.njk' %}
             {% else %}
               <p class="f24 sans ttu o20">{{ type }} Module</p>
             {% endif %}

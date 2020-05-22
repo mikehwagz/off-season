@@ -1,0 +1,37 @@
+<div class="slideshow" data-component="slideshow">
+  <div class="slideshow__slides rel">
+    {% for image in module.images %}
+      <div
+        class="{% classNames 'slideshow__slide js-slides r r--1x1' %}"
+        {{ 'aria-hidden=true' if not loop.first }}
+        style="background-color: {{ image.metadata.palette.dominant.background }}"
+      >
+        <div
+          class="ro js-wraps"
+          data-src="{% urlFor image, 700 %}"
+          data-class="lazy-boy x y o-cover o0"
+          data-alt="{{ image.altText }}"
+        ></div>
+      </div>
+    {% endfor %}
+    <div class="abs fill">
+      <button class="slideshow__btn slideshow__btn--dec abs fill-y df aic jcs js-dec" aria-label="Previous image">
+        <div class="slideshow__arrow slideshow__arrow--dec">
+          {% include 'arrowLeftShort.njk' %}
+        </div>
+      </button>
+      <button class="slideshow__btn slideshow__btn--inc abs fill-y df aic jce js-inc" aria-label="Next image">
+        <div class="slideshow__arrow slideshow__arrow--inc">
+          {% include 'arrowLeftShort.njk' %}
+        </div>
+      </button>
+    </div>
+  </div>
+  <div class="slideshow__pagination df mt10 mhn5">
+    {% for image in module.images %}
+      <div class="x bg-muted mh5" style="height: 1px">
+        <div class="slideshow__progress-bar x y bg-black js-progressBars"></div>
+      </div>
+    {% endfor %}
+  </div>
+</div>

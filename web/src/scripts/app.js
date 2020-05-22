@@ -6,6 +6,7 @@ import clock from '@/components/clock'
 import signup from '@/components/signup'
 import projectLink from '@/components/projectLink'
 import videoModule from '@/components/videoModule'
+import slideshow from '@/components/slideshow'
 
 const components = {
   mark,
@@ -13,6 +14,7 @@ const components = {
   signup,
   projectLink,
   videoModule,
+  slideshow,
 }
 
 const state = {

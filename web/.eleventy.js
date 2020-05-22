@@ -5,9 +5,9 @@ const readFile = util.promisify(fs.readFile)
 const cx = require('nanoclass')
 const blocksToHtml = require(`@sanity/block-content-to-html`)
 
-// const imageUrlBuilder = require('@sanity/image-url')
-// const client = require('./src/util/client')
-// const builder = imageUrlBuilder(client)
+const imageUrlBuilder = require('@sanity/image-url')
+const client = require('./src/util/client')
+const builder = imageUrlBuilder(client)
 
 module.exports = function(eleventyConfig) {
   eleventyConfig.setUseGitIgnore(false)
@@ -31,13 +31,13 @@ module.exports = function(eleventyConfig) {
       )}</pre>`,
   )
 
-  // eleventyConfig.addShortcode('urlFor', (image, width) => {
-  //   return builder
-  //     .image(image)
-  //     .width(width)
-  //     .auto('format')
-  //     .url()
-  // })
+  eleventyConfig.addShortcode('urlFor', (image, width) => {
+    return builder
+      .image(image)
+      .width(width)
+      .auto('format')
+      .url()
+  })
 
   eleventyConfig.addShortcode('blocksToHtml', (blocks) =>
     blocksToHtml({ blocks: blocks }),
