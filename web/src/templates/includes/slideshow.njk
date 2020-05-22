@@ -4,17 +4,19 @@
       <div
         class="{% classNames 'slideshow__slide js-slides r r--1x1' %}"
         {{ 'aria-hidden=true' if not loop.first }}
-        style="background-color: {{ image.metadata.palette.dominant.background }}"
       >
+        <div class="ro" aria-hidden="true">
+          <img class="x y o-cover" src="{{ image.metadata.lqip }}">
+        </div>
         <div
-          class="ro js-wraps"
+          class="ro z1 js-wraps"
           data-src="{% urlFor image, 700 %}"
           data-class="lazy-boy x y o-cover o0"
           data-alt="{{ image.altText }}"
         ></div>
       </div>
     {% endfor %}
-    <div class="abs fill">
+    <div class="abs fill z1">
       <button class="slideshow__btn slideshow__btn--dec abs fill-y df aic jcs js-dec" aria-label="Previous image">
         <div class="slideshow__arrow slideshow__arrow--dec">
           {% include 'arrowLeftShort.njk' %}

@@ -12,16 +12,29 @@
     &--dec {
       left: -4.8rem;
       cursor: w-resize;
+
+      &:hover {
+        .slideshow__arrow {
+          transform: translateX(-1rem);
+        }
+      }
     }
 
     &--inc {
       right: -4.8rem;
       cursor: e-resize;
+
+      &:hover {
+        .slideshow__arrow {
+          transform: translateX(1rem) rotate(180deg);
+        }
+      }
     }
   }
 
   &__arrow {
     width: 3.4rem;
+    transition: transform 0.3s $ease-out-quint;
 
     &--inc {
       transform: rotate(180deg);
