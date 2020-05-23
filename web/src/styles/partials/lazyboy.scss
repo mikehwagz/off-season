@@ -1,0 +1,9 @@
+.lazyboy {
+  &__lqip {
+    filter: blur(10px);
+  }
+
+  &__img {
+    transition: opacity 0.6s $ease-out-quint;
+  }
+}

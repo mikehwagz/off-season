@@ -1,35 +1,14 @@
 <div class="two-up-images df">
   <div class="two-up-images__col w50">
-    <div
-      class="r"
-      style="padding-bottom: {{ 1 / module.image1.metadata.dimensions.aspectRatio * 100 }}%"
-    >
-      <div class="ro" aria-hidden="true">
-        <img class="x y o-cover" src="{{ module.image1.metadata.lqip }}">
-      </div>
-      <div
-        class="ro z1 js-wraps"
-        data-src="{% urlFor module.image1, 700 %}"
-        data-class="lazy-boy x y o-cover o0"
-        data-alt="{{ module.image1.altText }}"
-      ></div>
-    </div>
+    {% set width = 335 %}
+    {% set image = module.image1 %}
+    {% set padding = true %}
+    {% include 'lazyboy.njk' %}
   </div>
   <div class="two-up-images__col w50">
-    <div
-      class="r"
-      style="padding-bottom: {{ 1 / module.image2.metadata.dimensions.aspectRatio * 100 }}%"
-    >
-      <div class="ro" aria-hidden="true">
-        <img class="x y o-cover" src="{{ module.image2.metadata.lqip }}">
-      </div>
-      <div
-        class="ro z1 js-wraps"
-        data-src="{% urlFor module.image2, 700 %}"
-        data-class="lazy-boy x y o-cover o0"
-        data-alt="{{ module.image2.altText }}"
-      ></div>
-    </div>
+    {% set image = module.image2 %}
+    {% set padding = true %}
+    {% include 'lazyboy.njk' %}
   </div>
 </div>
 {% if module.caption %}

@@ -62,23 +62,23 @@ export default component((node, ctx) => {
       }
     })
 
-    let el = wraps[idx]
-    if (!el.loaded) {
-      let img = new Image()
+    // let el = wraps[idx]
+    // if (!el.loaded) {
+    //   let img = new Image()
 
-      img.src = el.dataset.src
-      img.className = el.dataset.class
-      img.alt = el.dataset.alt
+    //   img.src = el.dataset.src
+    //   img.className = el.dataset.class
+    //   img.alt = el.dataset.alt
 
-      el.loaded = true
+    //   el.loaded = true
 
-      img.decode().then(() => {
-        el.append(img)
-        requestAnimationFrame(() => {
-          remove(img, 'o0')
-        })
-      })
-    }
+    //   img.decode().then(() => {
+    //     el.append(img)
+    //     requestAnimationFrame(() => {
+    //       remove(img, 'o0')
+    //     })
+    //   })
+    // }
 
     tl.to(progressBars[idx], {
       duration: 4,

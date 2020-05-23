@@ -2,18 +2,13 @@
   <div class="slideshow__slides rel">
     {% for image in module.images %}
       <div
-        class="{% classNames 'slideshow__slide js-slides r r--1x1' %}"
+        class="slideshow__slide js-slides"
         {{ 'aria-hidden=true' if not loop.first }}
       >
-        <div class="ro" aria-hidden="true">
-          <img class="x y o-cover" src="{{ image.metadata.lqip }}">
-        </div>
-        <div
-          class="ro z1 js-wraps"
-          data-src="{% urlFor image, 700 %}"
-          data-class="lazy-boy x y o-cover o0"
-          data-alt="{{ image.altText }}"
-        ></div>
+        {% set width = 700 %}
+        {% set cx = 'r--1x1' %}
+        {% set padding = false %}
+        {% include 'lazyboy.njk' %}
       </div>
     {% endfor %}
     <div class="abs fill z1">

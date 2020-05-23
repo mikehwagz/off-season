@@ -1,0 +1,18 @@
+<div
+  class="{% classNames 'lazyboy oh r', cx if cx else '' %}"
+  {% if padding %}
+    style="padding-bottom: {{ 1 / image.metadata.dimensions.aspectRatio * 100 }}%"
+  {% endif %}
+  data-component="lazyboy"
+>
+  <div class="lazyboy__lqip ro js-lqip" aria-hidden="true">
+    <img class="x y o-cover" src="{{ image.metadata.lqip }}">
+  </div>
+  <div class="ro">
+    <img
+      class="lazyboy__img x y o-cover o0 js-img"
+      data-src="{% urlFor image, width %}"
+      alt="{{ image.altText }}"
+    >
+  </div>
+</div>

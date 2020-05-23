@@ -19,11 +19,10 @@ class Base extends Highway.Renderer {
     gsap.set('[data-router-view]', { autoAlpha: 1 })
   }
 
-  onEnter() {
-    this.mount()
-  }
+  onEnter() {}
 
   onEnterCompleted() {
+    this.mount()
     // add(document.querySelector('.shield'), 'pen')
   }
 
