@@ -1,7 +1,17 @@
-.two-up-images {
+.two-up {
   margin: 0 -1.2rem;
 
   &__col {
     padding: 0 1.2rem;
+
+    &--image-text {
+      &:nth-child(1) {
+        width: 61%;
+      }
+
+      &:nth-child(2) {
+        width: 39%;
+      }
+    }
   }
 }

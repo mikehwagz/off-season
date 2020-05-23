@@ -1,0 +1,13 @@
+<div class="two-up df aie">
+  <div class="two-up__col two-up__col--image-text">
+    {% set width = 425 %}
+    {% set image = module.image %}
+    {% set padding = true %}
+    {% include 'lazyboy.njk' %}
+  </div>
+  <div class="two-up__col two-up__col--image-text f18 lh133">
+    {% blocksToHtml module.text %}
+  </div>
+</div>
+{% if module.caption %}
+{% endif %}
