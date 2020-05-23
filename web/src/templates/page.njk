@@ -43,6 +43,8 @@ renderData:
               {% include 'slideshow.njk' %}
             {% elif type == 'colophon' %}
               {% include 'colophon.njk' %}
+            {% elif type == 'twoUpImages' %}
+              {% include 'twoUpImages.njk' %}
             {% else %}
               <p class="f24 sans ttu o20">{{ type }} Module</p>
             {% endif %}
