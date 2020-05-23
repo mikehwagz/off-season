@@ -36,4 +36,9 @@
       </div>
     {% endfor %}
   </div>
+  {% if module.caption %}
+    <div class="slideshow__caption f18 lh133 mt25">
+      {% blocksToHtml module.caption %}
+    </div>
+  {% endif %}
 </div>

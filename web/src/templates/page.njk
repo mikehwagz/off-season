@@ -32,7 +32,7 @@ renderData:
                 {% blocksToHtml module.content %}
               </div>
             {% elif type == 'heading' %}
-              <h2 class="f24 lh100 ttu mb20">{{ module.text }}</h2>
+              <h2 class="f24 lh100 ttu">{{ module.text }}</h2>
             {% elif type == 'list' %}
               <ul class="df fw mhn5">
                 {% for item in module.items %}
@@ -41,6 +41,8 @@ renderData:
               </ul>
             {% elif type == 'slideshow' %}
               {% include 'slideshow.njk' %}
+            {% elif type == 'colophon' %}
+              {% include 'colophon.njk' %}
             {% else %}
               <p class="f24 sans ttu o20">{{ type }} Module</p>
             {% endif %}
