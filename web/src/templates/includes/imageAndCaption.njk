@@ -1,0 +1,7 @@
+{% set width = 700 %}
+{% set image = module.image %}
+{% set padding = true %}
+{% include 'lazyboy.njk' %}
+{% if module.caption %}
+  <div class="mt20 f18 lh133">{% blocksToHtml module.caption %}</div>
+{% endif %}
