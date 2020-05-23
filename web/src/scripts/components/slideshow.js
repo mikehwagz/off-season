@@ -1,10 +1,10 @@
 import { component } from 'picoapp'
 import choozy from 'choozy'
-import { on, add, remove, wrap } from '@selfaware/martha'
+import { on, wrap } from '@selfaware/martha'
 import gsap from 'gsap'
 
 export default component((node, ctx) => {
-  let { inc, dec, slides, wraps, progressBars } = choozy(node)
+  let { inc, dec, slides, progressBars } = choozy(node)
   let tl = gsap.timeline()
   let isPaused = false
   let pauseThreshold = 300
@@ -61,24 +61,6 @@ export default component((node, ctx) => {
         el.setAttribute('aria-hidden', true)
       }
     })
-
-    // let el = wraps[idx]
-    // if (!el.loaded) {
-    //   let img = new Image()
-
-    //   img.src = el.dataset.src
-    //   img.className = el.dataset.class
-    //   img.alt = el.dataset.alt
-
-    //   el.loaded = true
-
-    //   img.decode().then(() => {
-    //     el.append(img)
-    //     requestAnimationFrame(() => {
-    //       remove(img, 'o0')
-    //     })
-    //   })
-    // }
 
     tl.to(progressBars[idx], {
       duration: 4,
