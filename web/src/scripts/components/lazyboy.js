@@ -1,7 +1,7 @@
 import { component } from 'picoapp'
 import choozy from 'choozy'
 import inview from '@/util/inview'
-import { on, remove, index } from '@selfaware/martha'
+import { on, remove } from '@selfaware/martha'
 
 export default component((node, ctx) => {
   let { lqip, img } = choozy(node)
