@@ -1,9 +1,8 @@
 import { component } from 'picoapp'
 import { on, remove, add } from '@selfaware/martha'
-import gsap from 'gsap'
 
 export default component((node) => {
-  let thumbs = document.querySelectorAll('.js-thumb')
+  let thumbs = Array.from(document.querySelectorAll('.js-thumb'))
 
   let offEnter = on(node, 'mouseenter', enter)
   let offFocus = on(node, 'focus', enter)
@@ -15,6 +14,8 @@ export default component((node) => {
     offFocus()
     offLeave()
     offBlur()
+
+    leave()
   }
 
   function enter() {
