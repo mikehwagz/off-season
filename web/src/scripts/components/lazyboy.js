@@ -15,13 +15,15 @@ export default component((node, ctx) => {
 
   function load() {
     img.onload = () => {
-      requestAnimationFrame(() => {
-        let off = on(img, 'transitionend', () => {
-          off()
-          lqip.remove()
+      img.decode().then(() => {
+        requestAnimationFrame(() => {
+          let off = on(img, 'transitionend', () => {
+            off()
+            lqip.remove()
+          })
+          remove(img, 'o0')
+          img.removeAttribute('data-src')
         })
-        remove(img, 'o0')
-        img.removeAttribute('data-src')
       })
     }
     img.src = img.dataset.src
