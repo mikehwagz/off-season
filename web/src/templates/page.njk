@@ -17,12 +17,12 @@ renderData:
   
   {% include 'nav.njk' %}
 
-  <div
-    class="abs fill oy js-scroll"
-    style="padding-left: {{ 5.5 * active }}rem; padding-right: {{ 5.5 * diff }}rem;"
-  >
-    <div class="x bg-gray">
-      <div class="ph115 pt45">
+  <div class="abs fill oy js-scroll">
+    <div
+      class="x"
+      style="padding-left: {{ 5.5 * active }}rem; padding-right: {{ 5.5 * diff }}rem;"
+    >
+      <div class="ph115 pt45 bg-gray">
         {% for module in p.contentModules %}
           {% set type = module._type %}
           {% set pb = 'pb45' if module.isMarginSmall else 'pb100' %}
@@ -56,6 +56,6 @@ renderData:
         {% endfor %}
       </div>
     </div>
-    {# {% include 'footer.njk' %} #}
+    {% include 'footer.njk' %}
   </div>
 </div>

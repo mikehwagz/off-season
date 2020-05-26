@@ -2,6 +2,8 @@ import Highway from '@dogstudio/highway'
 import choozy from 'choozy'
 import gsap from 'gsap'
 import { rect, has, index } from '@selfaware/martha'
+import app from '@/app'
+import inview from '@/util/inview'
 
 class Tab extends Highway.Transition {
   in({ from, to, done }) {
@@ -44,6 +46,20 @@ class Tab extends Highway.Transition {
         willChange: 'transform',
       })
       .set(to.refs.navItems[from.index], { autoAlpha: 0 })
+
+    if (from.refs.footer && inview(from.refs.footer, app.getState().wh)) {
+      this.tl.to(
+        from.refs.footer,
+        {
+          yPercent: 100,
+          duration,
+          ease: `${ease}.inOut`,
+        },
+        'a',
+      )
+    }
+
+    this.tl
       .to(
         to.refs.navItems[from.index],
         {
@@ -65,6 +81,18 @@ class Tab extends Highway.Transition {
         },
         'a',
       )
+      .to(
+        from.refs.footer,
+        {
+          yPercent: 100,
+          duration,
+          ease: `${ease}.inOut`,
+        },
+        'a',
+      )
+      .set([to.refs.tabs, to.refs.scroll, to.refs.navItems].flat(), {
+        clearProps: 'all',
+      })
   }
 
   toLeft({ from, to, duration, ease }) {
@@ -78,6 +106,20 @@ class Tab extends Highway.Transition {
       .set(to.refs.tabs.slice(to.index + 1), { autoAlpha: 0 })
       .set(from.refs.dots[to.index], { backgroundColor: '#000' })
       .set(from.refs.dots[from.index], { backgroundColor: '#f1f1f1' })
+
+    if (from.refs.footer && inview(from.refs.footer, app.getState().wh)) {
+      this.tl.to(
+        from.refs.footer,
+        {
+          yPercent: 100,
+          duration,
+          ease: `${ease}.inOut`,
+        },
+        'a',
+      )
+    }
+
+    this.tl
       .to(
         from.refs.scroll,
         {

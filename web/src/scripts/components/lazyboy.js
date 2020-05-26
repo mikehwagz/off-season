@@ -8,7 +8,6 @@ export default component((node, ctx) => {
 
   let offTick = ctx.on('tick', ({ wh }) => {
     if (inview(node, wh)) {
-      console.log(`slide ${index(node.parentNode)} is visible`)
       load()
       offTick()
     }

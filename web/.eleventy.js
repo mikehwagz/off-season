@@ -31,12 +31,18 @@ module.exports = function(eleventyConfig) {
       )}</pre>`,
   )
 
-  eleventyConfig.addShortcode('urlFor', (image, width) => {
-    return builder
+  eleventyConfig.addShortcode('urlFor', (image, width, blur) => {
+    let b = builder
       .image(image)
       .width(width)
       .auto('format')
-      .url()
+      .fit('max')
+
+    if (blur) {
+      return b.blur(blur).url()
+    } else {
+      return b.url()
+    }
   })
 
   eleventyConfig.addShortcode('blocksToHtml', (blocks) =>
