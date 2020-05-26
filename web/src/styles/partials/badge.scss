@@ -1,11 +1,7 @@
 .badge {
   width: 13rem;
   height: 13rem;
-
-  &__char {
-    width: 1.3rem;
-    height: 6rem;
-    transform-origin: bottom center;
-    // border: 1px solid red;
-  }
+  transform: rotate(16deg);
+  right: 3rem;
+  bottom: 3rem;
 }

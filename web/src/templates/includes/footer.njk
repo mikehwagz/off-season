@@ -1,10 +1,11 @@
 {% set footer = site.footer %}
+{% set bgColor = '#E2EBF2' %}
 <div class="rel">
   <div
     class="abs fill-y bg-gray bh wct js-footerGhost"
     style="left: {{ 5.5 * active }}rem; right: {{ 5.5 * diff }}rem;"
   ></div>
-  <footer class="f24 lh125 ph25 bg-gray bt pt40 pb20 rel z2 js-footer">
+  <footer class="footer f24 lh125 pl35 pr30 bg-gray bt pt40 pb20 rel z2 js-footer" style="background-color: {{ bgColor }}">
     <div class="df jcb mb60 mhn10 rel z1">
       <div class="w40 ph10">
         <h3 class="ttu mb30">{{ footer.newsletterHeading }}</h3>
@@ -19,18 +20,24 @@
           </div>
         </div>
         <div>
-          <a class="inline-link mr25" href="mailto:{{ footer.emailAddress }}">Email</a>
+          <a
+            class="inline-link mr25"
+            href="mailto:{{ footer.emailAddress }}"
+            style="--bg: {{ bgColor }}"
+          >Email</a>
           <a
             class="inline-link mr25"
             href="https://instagram.com/{{ footer.instagramHandle }}"
             target="_blank"
             rel="noopener noreferrer"
+            style="--bg: {{ bgColor }}"
           >Instagram</a>
           <a
             class="inline-link"
             href="{{ footer.spotifyLink }}"
             target="_blank"
             rel="noopener noreferrer"
+            style="--bg: {{ bgColor }}"
           >Spotify</a>
         </div>
       </div>
@@ -39,9 +46,8 @@
       <span class="dib f24 lh125 mr5">©</span>
       <span class="dib f18 lh166">{{ footer.copyrightText }}</span>
     </p>
-    {# <div class="badge abs right bottom mr30 mb30 ba bg-gray br50 df fc jcb" data-component="badge">
-      <p class="f22 mono tc ttu pt5 js-topText">Off Season</p>
-      <p class="f22 mono tc ttu js-bottomText">Creative</p>
-    </div> #}
+    <div class="badge abs bottom right" aria-hidden="true">
+      {% include 'badge.njk' %}
+    </div>
   </footer>
 </div>

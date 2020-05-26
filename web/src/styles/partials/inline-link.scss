@@ -1,12 +1,14 @@
 .inline-link {
-  text-shadow: 0.02em 0.02em 0 $gray, -0.02em 0.02em 0 $gray, 0.04em 0 0 $gray,
-    -0.04em 0 0 $gray;
-  box-shadow: 0 -0.1em 0 0 $gray inset, 0 -0.14em 0 0 currentColor inset;
+  --bg: $gray;
+
+  text-shadow: 0.02em 0.02em 0 var(--bg), -0.02em 0.02em 0 var(--bg),
+    0.04em 0 0 var(--bg), -0.04em 0 0 var(--bg);
+  box-shadow: 0 -0.1em 0 0 var(--bg) inset, 0 -0.14em 0 0 currentColor inset;
   transition: box-shadow 0.2s ease;
   position: relative;
   z-index: 1;
 
   &:hover {
-    box-shadow: 0 -0.1em 0 0 $gray inset, 0 -0.14em 0 0 $gray inset;
+    box-shadow: 0 -0.1em 0 0 var(--bg) inset, 0 -0.14em 0 0 var(--bg) inset;
   }
 }
