@@ -11,7 +11,9 @@
   <div class="ro">
     <img
       class="lazyboy__img x y o-cover o0 js-img"
-      data-src="{% urlFor image, width %}"
+      srcset="{% urlFor image, width %},
+              {% urlFor image, width * 2 %} 2x"
+      data-src="{% urlFor image, width * 2 %}"
       alt="{{ image.altText }}"
     >
   </div>
