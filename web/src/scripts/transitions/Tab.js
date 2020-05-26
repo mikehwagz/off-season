@@ -40,7 +40,7 @@ class Tab extends Highway.Transition {
       .set(from.refs.tabs.slice(from.index + 1, to.index + 1), {
         autoAlpha: 0,
       })
-      .set(to.refs.scroll, { x, willChange: 'transform' })
+      .set(to.refs.inner, { x, willChange: 'transform' })
       .set(to.refs.tabs.slice(from.index + 1, to.index + 1), {
         x,
         willChange: 'transform',
@@ -72,7 +72,7 @@ class Tab extends Highway.Transition {
       .to(
         [
           to.refs.tabs.slice(from.index + 1, to.index + 1),
-          to.refs.scroll,
+          to.refs.inner,
         ].flat(),
         {
           x: 0,
@@ -90,7 +90,7 @@ class Tab extends Highway.Transition {
         },
         'a',
       )
-      .set([to.refs.tabs, to.refs.scroll, to.refs.navItems].flat(), {
+      .set([to.refs.tabs, to.refs.inner, to.refs.navItems].flat(), {
         clearProps: 'all',
       })
   }
@@ -99,11 +99,11 @@ class Tab extends Highway.Transition {
     let x = this.getX(to)
     this.tl
       .set(from, { zIndex: 1 })
-      .set(from.refs.scroll, { willChange: 'transform' })
+      .set(from.refs.inner, { willChange: 'transform' })
       .set(from.refs.tabs.slice(to.index + 1, from.index + 1), {
         willChange: 'transform',
       })
-      .set(to.refs.tabs.slice(to.index + 1), { autoAlpha: 0 })
+      .set(to.refs.tabs, { autoAlpha: 0 })
       .set(from.refs.dots[to.index], { backgroundColor: '#000' })
       .set(from.refs.dots[from.index], { backgroundColor: '#f1f1f1' })
 
@@ -121,7 +121,7 @@ class Tab extends Highway.Transition {
 
     this.tl
       .to(
-        from.refs.scroll,
+        from.refs.inner,
         {
           x,
           duration,
@@ -138,7 +138,7 @@ class Tab extends Highway.Transition {
         },
         'a',
       )
-      .set(to.refs.tabs.slice(to.index + 1), { autoAlpha: 1 })
+      .set(to.refs.tabs, { autoAlpha: 1 })
   }
 
   projectToIndex({ from, to, duration, ease }) {

@@ -22,7 +22,7 @@ renderData:
       class="x"
       style="padding-left: {{ 5.5 * active }}rem; padding-right: {{ 5.5 * diff }}rem;"
     >
-      <div class="ph115 pt45 bg-gray">
+      <div class="ph115 pt45 bg-gray js-inner">
         {% for module in p.contentModules %}
           {% set type = module._type %}
           {% set pb = 'pb45' if module.isMarginSmall else 'pb100' %}

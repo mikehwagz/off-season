@@ -2,34 +2,44 @@
 layout: baseSidebar.njk
 title: Work
 ---
-<div class="abs fill wco" data-router-view="default">
+<div class="abs fill" data-router-view="default">
   
   {% set active = 0 %}
+  {% set total = site.pages | length %}
+  {% set diff = total - active %}
+
+  
   {% include 'nav.njk' %}
 
-  <div class="abs fill oy df fc jcb js-scroll">
-    <ul class="pl115 pr200 pt30 mb100">
-      {% for project in projects %}
-        <li class="oh">
-          <style>
-            #{{ project.slug }}:hover,
-            #{{ project.slug }}:focus {
-              color: {{ project.themeColor }};
-            }
-          </style>
-          <a
-            id="{{ project.slug }}"
-            class="dib sans f92 lh102 pv15 js-links"
-            href="/project/{{ project.slug }}/"
-            data-transition="toProject"
-            data-component="projectLink"
-          >
-            {{ project.title }}
-          </a>
-        </li>
-      {% endfor %}
-    </ul>
-
+  <div class="abs fill oy js-scroll">
+    <div
+      class="x"
+      style="padding-left: {{ 5.5 * active }}rem; padding-right: {{ 5.5 * diff }}rem;"
+    >
+      <div class="ph115 pt30 bg-gray js-inner">
+        <ul class="mb100">
+          {% for project in projects %}
+            <li class="oh">
+              <style>
+                #{{ project.slug }}:hover,
+                #{{ project.slug }}:focus {
+                  color: {{ project.themeColor }};
+                }
+              </style>
+              <a
+                id="{{ project.slug }}"
+                class="dib sans f92 lh102 pv15 js-links"
+                href="/project/{{ project.slug }}/"
+                data-transition="toProject"
+                data-component="projectLink"
+              >
+                {{ project.title }}
+              </a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
     {% include 'footer.njk' %}
   </div>
 </div>
