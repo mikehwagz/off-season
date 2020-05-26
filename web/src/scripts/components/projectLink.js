@@ -1,5 +1,5 @@
 import { component } from 'picoapp'
-import { on } from '@selfaware/martha'
+import { on, remove, add } from '@selfaware/martha'
 import gsap from 'gsap'
 
 export default component((node) => {
@@ -18,14 +18,16 @@ export default component((node) => {
   }
 
   function enter() {
-    thumbs.forEach((img) => {
-      gsap.set(img, {
-        autoAlpha: img.dataset.id === node.id ? 1 : 0,
-      })
+    thumbs.forEach((thumb) => {
+      if (thumb.dataset.id === node.id) {
+        remove(thumb, 'dn')
+      } else {
+        add(thumb, 'dn')
+      }
     })
   }
 
   function leave() {
-    gsap.set(thumbs, { autoAlpha: 0 })
+    add(thumbs, 'dn')
   }
 })

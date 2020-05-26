@@ -10,14 +10,12 @@
     </div>
 
     {% for project in projects %}
-      <div class="ro">
-        <img
-          data-id="{{ project.slug }}"
-          class="x y o-cover js-thumb"
-          style="opacity: 0; visibility: hidden;"
-          src="{{ project.thumbnail.url }}"
-          alt="{{ project.thumbnail.altText }}"
-        />
+      <div class="ro dn js-thumb" data-id="{{ project.slug }}">
+        {% set width = 720 %}
+        {% set cx = 'r--1x1' %}
+        {% set padding = false %}
+        {% set image = project.thumbnail %}
+        {% include 'lazyboy.njk' %}
       </div>
     {% endfor %}
   </div>
