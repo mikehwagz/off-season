@@ -45,9 +45,13 @@ module.exports = function(eleventyConfig) {
     }
   })
 
-  eleventyConfig.addShortcode('blocksToHtml', (blocks) =>
-    blocksToHtml({ blocks: blocks }),
-  )
+  eleventyConfig.addShortcode('blocksToHtml', (blocks) => {
+    try {
+      return blocksToHtml({ blocks })
+    } catch (e) {
+      return ''
+    }
+  })
 
   eleventyConfig.addShortcode('classNames', (...all) => cx(all))
 

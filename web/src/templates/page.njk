@@ -19,41 +19,12 @@ renderData:
 
   <div class="abs fill oy js-scroll">
     <div
-      class="x"
+      class="x min-vh100"
       style="padding-left: {{ 5.5 * active }}rem; padding-right: {{ 5.5 * diff }}rem;"
     >
-      <div class="ph115 pt45 bg-gray js-inner">
-        {% for module in p.contentModules %}
-          {% set type = module._type %}
-          {% set pb = 'pb45' if module.isMarginSmall else 'pb100' %}
-          <div class="{% classNames 'pb20' if module._type == 'heading' else pb %}">
-            {% if type == 'moduleText' %}
-              <div class="rte f24 lh125">
-                {% blocksToHtml module.content %}
-              </div>
-            {% elif type == 'heading' %}
-              <h2 class="f24 lh100 ttu">{{ module.text }}</h2>
-            {% elif type == 'list' %}
-              <ul class="df fw mhn5">
-                {% for item in module.items %}
-                  <li class="third f24 lh141 ph5">{{ item }}</li>
-                {% endfor %}
-              </ul>
-            {% elif type == 'slideshow' %}
-              {% include 'slideshow.njk' %}
-            {% elif type == 'colophon' %}
-              {% include 'colophon.njk' %}
-            {% elif type == 'twoUpImages' %}
-              {% include 'twoUpImages.njk' %}
-            {% elif type == 'imageAndCaption' %}
-              {% include 'imageAndCaption.njk' %}
-            {% elif type == 'twoUpImageAndText' %}
-              {% include 'twoUpImageAndText.njk' %}
-            {% else %}
-              <p class="f24 sans ttu o20">{{ type }} Module</p>
-            {% endif %}
-          </div>
-        {% endfor %}
+      <div class="pt45 bg-gray js-inner">
+        {% set modules = p.contentModules %}
+        {% include 'contentModules.njk' %}
       </div>
     </div>
     {% include 'footer.njk' %}

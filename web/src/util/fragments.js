@@ -62,7 +62,7 @@ module.exports.contentModules = `contentModules[] {
     items,
   },
   _type == 'quote' => {
-    quote,
+    quotation,
     attribution,
   },
 }`

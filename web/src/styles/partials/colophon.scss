@@ -4,7 +4,8 @@
 
   &__item {
     break-inside: avoid-column; /* required to prevent items from breaking to next column */
-    display: inline-block; /* required to prevent items from breaking to next column */
+    display: flex; /* required to prevent items from breaking to next column */
+    flex-direction: column; /* required to prevent items from breaking to next column */
     width: 100%; /* required to replicate block since inline-block is required to prevent column breaks */
   }
 }
