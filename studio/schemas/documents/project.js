@@ -36,9 +36,7 @@ export default {
     {
       title: 'Intro Text',
       name: 'introText',
-      type: 'text',
-      rows: 4,
-      validation: (Rule) => Rule.max(280),
+      type: 'shortText',
     },
     {
       title: 'Roles',

@@ -14,4 +14,13 @@ export default {
       type: 'boolean',
     },
   ],
+  preview: {
+    select: {
+      media: 'image.image',
+    },
+    prepare: ({ ...selection }) => ({
+      ...selection,
+      title: 'Full Bleed',
+    }),
+  },
 }
