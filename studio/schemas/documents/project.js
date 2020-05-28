@@ -43,6 +43,7 @@ export default {
       name: 'roles',
       type: 'array',
       of: [{ type: 'string' }],
+      description: 'Press enter after each role to create a tag',
       options: {
         layout: 'tags',
       },
