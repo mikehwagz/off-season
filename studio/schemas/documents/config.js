@@ -32,6 +32,14 @@ export default {
       type: 'object',
       fields: [
         {
+          title: 'Background Color',
+          name: 'bgColor',
+          type: 'color',
+          options: {
+            disableAlpha: true,
+          },
+        },
+        {
           title: 'Newsletter Heading',
           name: 'newsletterHeading',
           type: 'string',
