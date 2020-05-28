@@ -3,7 +3,7 @@ export default {
   name: 'a11yImage',
   type: 'object',
   options: {
-    collapsible: true,
+    collapsible: false,
   },
   fields: [
     {
