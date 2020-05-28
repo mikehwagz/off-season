@@ -1,10 +1,14 @@
 import Highway from '@dogstudio/highway'
-import { on, add, remove, size } from '@selfaware/martha'
+import { on, size } from '@selfaware/martha'
 import gsap from 'gsap'
 import app from '@/app'
+import { listen } from 'quicklink'
 
 class Base extends Highway.Renderer {
   onFirstLoad() {
+    // automatically prefetch URLs for links that are in-viewport during idle time
+    listen()
+
     // broadcast global events
     on(window, 'resize', this.resize)
     on(window, 'focus', this.focus)
@@ -23,12 +27,9 @@ class Base extends Highway.Renderer {
 
   onEnterCompleted() {
     this.mount()
-    // add(document.querySelector('.shield'), 'pen')
   }
 
   onLeave() {
-    // remove(document.querySelector('.shield'), 'pen')
-
     this.unmount()
   }
 

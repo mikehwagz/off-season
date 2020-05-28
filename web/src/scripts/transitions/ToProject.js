@@ -37,6 +37,7 @@ class ToProject extends Highway.Transition {
           duration: duration * 0.5,
           autoAlpha: 0,
           ease: 'expo',
+          clearProps: 'all',
         },
         'a',
       )
