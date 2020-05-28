@@ -17,7 +17,7 @@ export default {
     {
       title: 'Attribution',
       name: 'attribution',
-      description: 'Dash is prepended in the front-end',
+      description: 'Do not include dash',
       type: 'string',
     },
     {
