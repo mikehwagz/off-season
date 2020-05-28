@@ -17,7 +17,7 @@ export default {
       type: 'string',
       description:
         'A short description of the image that is important for accessibility and SEO',
-      validation: (Rule) => Rule.required(),
+      validation: (Rule) => Rule.max(125).required(),
     },
   ],
 }
