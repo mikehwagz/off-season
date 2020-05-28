@@ -1,24 +1,41 @@
-<div class="video mb150" data-component="videoModule">
+<div
+  class="video"
+  data-component="videoModule"
+  {% if module.hasAudio %}
+    data-audio
+  {% endif %}
+>
   <div class="x r r--1x1">
     <div class="ro">
       <video
         class="x js-video"
-        src="/geographer.mp4"
+        src="{{ module.video.url }}"
+        poster="{% urlFor module.poster, 695 %}"
+        aria-label="{{ module.altText }}"
         preload="auto"
         muted
         loop
         playsinline
+        volume="0.5"
       ></video>
     </div>
   </div>
-  <div class="df aic jcb mt20">
-    <p>Lorem ipsum video caption</p>
-    <button class="video__mute sans f14 ttu ls0 o70 df aic oh js-mute">
-      <div class="video__mute__text rel mr10 js-muteText">
-        <span>Unmute</span>
-        <span class="video__mute__text--2 abs top right">Mute</span>
-      </div>
-      <div class="video__mute__wave js-waveWrap"></div>
-    </button>
-  </div>
+  {% if module.caption or module.hasAudio %}
+    <div class="df aic jcb mt20">
+      {% if module.caption %}
+        <div class="rte">
+          {% blocksToHtml module.caption %}
+        </div>
+      {% endif %}
+      {% if module.hasAudio %}
+        <button class="video__mute sans f14 ttu ls0 o70 df aic oh mla js-mute">
+          <div class="video__mute__text rel mr10 js-muteText">
+            <span>Unmute</span>
+            <span class="video__mute__text--2 abs top right">Mute</span>
+          </div>
+          <div class="video__mute__wave js-waveWrap"></div>
+        </button>
+      {% endif %}
+    </div>
+  {% endif %}
 </div>

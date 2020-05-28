@@ -13,6 +13,7 @@ module.exports.contentModules = `contentModules[] {
     'caption': caption.content,
     'poster': poster.image.asset->,
     'altText': image.altText,
+    hasAudio
   },
   _type == 'twoUpImageAndText' => {
     text,

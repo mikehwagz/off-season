@@ -13,6 +13,13 @@ export default {
       type: 'file',
     },
     {
+      title: 'Does the video have audio?',
+      description:
+        'If true, video will be muted by default with a mute/unmute button.',
+      name: 'hasAudio',
+      type: 'boolean',
+    },
+    {
       title: 'First Frame Image',
       description:
         'An image of the first frame of the video that is displayed while the video is loading.',
@@ -33,12 +40,12 @@ export default {
   preview: {
     select: {
       caption: 'caption',
-      poster: 'poster',
+      media: 'poster.image',
     },
     prepare: ({ caption, ...selection }) => ({
-      ...selection,
       title: 'Video & Caption',
       subtitle: caption && caption.content ? toPlainText(caption.content) : '',
+      ...selection,
     }),
   },
 }
