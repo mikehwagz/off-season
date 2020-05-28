@@ -12,7 +12,10 @@ module.exports = async function() {
       'slug': slug.current,
       ${fragments.contentModules}
     },
-    footer,
+    footer {
+      ...,
+      "bgColor": bgColor.hex,
+    },
     seo,
   }`)
 
