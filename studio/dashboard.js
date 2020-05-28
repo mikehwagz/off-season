@@ -6,10 +6,10 @@ export default {
         title: 'Netlify',
         sites: [
           {
-            title: '<SITE_TITLE>',
-            apiId: '<NETLIFY_API_ID>',
-            buildHookId: '<NETLIFY_BUILD_HOOK_ID>',
-            name: '<NETLIFY_SITE_NAME>',
+            title: 'Off Season',
+            apiId: 'bb8bf8b4-18a3-49e5-970e-b350b580cc15',
+            buildHookId: '5ed005de750908d1b995664f',
+            name: 'offseason',
           },
         ],
       },
