@@ -5,7 +5,10 @@
     {% set padding = true %}
     {% include 'lazyboy.njk' %}
   </div>
-  <div class="two-up__col two-up__col--image-text f18 lh133">
+  <div class="{% classNames
+    'two-up__col two-up__col--image-text f18 lh133',
+    'on1' if module.columnOrder == '-1'
+  %}">
     {% blocksToHtml module.text %}
   </div>
 </div>
