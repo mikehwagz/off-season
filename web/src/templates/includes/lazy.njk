@@ -1,16 +1,16 @@
 <div
-  class="{% classNames 'lazyboy oh r', cx if cx else '' %}"
+  class="{% classNames 'lazy oh r', cx if cx else '' %}"
   {% if padding %}
     style="padding-bottom: {{ 1 / image.metadata.dimensions.aspectRatio * 100 }}%"
   {% endif %}
-  data-component="lazyboy"
+  data-component="lazy"
 >
-  <div class="lazyboy__lqip ro js-lqip" aria-hidden="true">
+  <div class="lazy__lqip ro js-lqip" aria-hidden="true">
     <img class="x y o-cover" src="{% urlFor image, 32, 50 %}">
   </div>
   <div class="ro">
     <img
-      class="lazyboy__img x y o-cover o0 js-img"
+      class="lazy__img x y o-cover o0 js-img"
       srcset="{% urlFor image, width %},
               {% urlFor image, width * 2 %} 2x"
       data-src="{% urlFor image, width * 2 %}"
