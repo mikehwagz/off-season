@@ -1,6 +1,6 @@
 {% for module in modules %}
   {% set type = module._type %}
-  {% set paddingBottom = 'pb45' if module.isMarginSmall else 'pb100' %}
+  {% set paddingBottom = 'pb45' if module.isMarginSmall else 'pb125' %}
   <div class="{% 
     classNames 
       'pb20' if type == 'heading' else paddingBottom,

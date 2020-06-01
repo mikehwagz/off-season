@@ -26,7 +26,7 @@
 
       &:hover {
         .slideshow__arrow {
-          transform: translateX(1rem) rotate(180deg);
+          transform: translateX(1rem);
         }
       }
     }
@@ -35,10 +35,6 @@
   &__arrow {
     width: 3.4rem;
     transition: transform 0.3s $ease-out-quint;
-
-    &--inc {
-      transform: rotate(180deg);
-    }
   }
 
   &__progress-bar {
