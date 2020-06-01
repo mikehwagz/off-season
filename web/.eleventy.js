@@ -107,6 +107,10 @@ module.exports = function(eleventyConfig) {
     return next ? next.themeColor : ''
   })
 
+  eleventyConfig.addShortcode('encode', (str) =>
+    Buffer.from(str, 'utf-8').toString('base64'),
+  )
+
   eleventyConfig.addPassthroughCopy({ 'src/assets/icons': '/' })
   eleventyConfig.addPassthroughCopy({ 'src/assets/videos': '/' })
 

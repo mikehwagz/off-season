@@ -8,6 +8,7 @@ import projectLink from '@/components/projectLink'
 import videoModule from '@/components/videoModule'
 import slideshow from '@/components/slideshow'
 import lazy from '@/components/lazy'
+import password from '@/components/password'
 
 const components = {
   mark,
@@ -17,6 +18,7 @@ const components = {
   videoModule,
   slideshow,
   lazy,
+  password,
 }
 
 const state = {
