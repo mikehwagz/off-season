@@ -47,7 +47,33 @@ module.exports = function(eleventyConfig) {
 
   eleventyConfig.addShortcode('blocksToHtml', (blocks) => {
     try {
-      return blocksToHtml({ blocks })
+      const h = blocksToHtml.h
+      const serializers = {
+        marks: {
+          hyperlink: ({ children, mark }) =>
+            h(
+              'a',
+              {
+                className: 'inline-link',
+                href: mark.url,
+                target: mark.isExternal ? '_blank' : null,
+                rel: mark.isExternal ? 'noopener noreferrer' : null,
+              },
+              children,
+            ),
+          emailLink: ({ children, mark }) =>
+            h(
+              'a',
+              {
+                className: 'inline-link',
+                href: `mailto:${mark.email}`,
+                'data-component': 'emailLink',
+              },
+              children,
+            ),
+        },
+      }
+      return blocksToHtml({ blocks, serializers })
     } catch (e) {
       return ''
     }
