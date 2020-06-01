@@ -8,7 +8,6 @@ title: Work
   {% set total = site.pages | length %}
   {% set diff = total - active %}
 
-  
   {% include 'nav.njk' %}
 
   <div class="abs fill oy js-scroll">
@@ -18,7 +17,7 @@ title: Work
     >
       <div class="pt30 js-inner">
         <ul class="mb100">
-          {% for project in projects %}
+          {% for project in selectedProjects %}
             <li class="oh ph115">
               <style>
                 #{{ project.slug }}:hover,

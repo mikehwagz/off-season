@@ -1,4 +1,6 @@
-module.exports.contentModules = `contentModules[] {
+const groq = require('groq')
+
+const contentModules = groq`contentModules[] {
   _type,
   isMarginSmall,
   _type == 'imageAndCaption' => {
@@ -68,3 +70,25 @@ module.exports.contentModules = `contentModules[] {
     url,
   },
 }`
+
+const project = groq`{
+  title,
+  "slug": slug.current,
+  "themeColor": themeColor.hex,
+  thumbnail {
+    altText,
+    ...image.asset->
+  },
+  introText,
+  roles,
+  year,
+  management,
+  team,
+  password,
+  ${contentModules}
+}`
+
+module.exports = {
+  contentModules,
+  project,
+}

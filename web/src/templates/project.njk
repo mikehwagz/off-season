@@ -9,11 +9,10 @@ renderData:
   title: "{{ project.title }}"
 ---
 <div class="abs fill" data-router-view="default">
-  
+
   {% set active = 0 %}
   {% set total = site.pages | length %}
   {% set diff = total - active %}
-
   
   {% include 'nav.njk' %}
 
@@ -76,6 +75,36 @@ renderData:
             {% set modules = project.contentModules %}
             {% include 'contentModules.njk' %}
           </div>
+
+          {% set nextProjectSlug %}{% nextProjectSlug project.slug, selectedProjects %}{% endset %}
+          {% set nextProjectTitle %}{% nextProjectTitle project.slug, selectedProjects %}{% endset %}
+          {% set nextProjectColor %}{% nextProjectColor project.slug, selectedProjects %}{% endset %}
+
+          {% if nextProjectSlug | length %}
+            <div class="pt40 pb180 ph115">
+              <div class="f18 lh133 ttu df aic mb50">
+                Next project
+                <div class="signup__arrow ml20">
+                  {% include 'arrowRight.njk' %}
+                </div>
+              </div>
+              <style>
+                #pagi-{{ nextProjectSlug }}:hover,
+                #pagi-{{ nextProjectSlug }}:focus {
+                  color: {{ nextProjectColor }};
+                }
+              </style>
+              <a
+                id="pagi-{{ nextProjectSlug }}"
+                class="sans f92 lh102 wct pt15"
+                href="/project/{{ nextProjectSlug }}"
+                data-transition="toProject"
+              >
+                {{ nextProjectTitle }}
+              </a>
+            </div>
+          {% endif %}
+
         </div>
       </div>
     </div>

@@ -4,7 +4,7 @@ const util = require('util')
 const readFile = util.promisify(fs.readFile)
 const cx = require('nanoclass')
 const blocksToHtml = require(`@sanity/block-content-to-html`)
-
+const { wrap } = require('@selfaware/martha')
 const imageUrlBuilder = require('@sanity/image-url')
 const client = require('./src/util/client')
 const builder = imageUrlBuilder(client)
@@ -80,6 +80,32 @@ module.exports = function(eleventyConfig) {
   })
 
   eleventyConfig.addShortcode('classNames', (...all) => cx(all))
+
+  function nextProject(slug, selectedProjects) {
+    let project = selectedProjects.find((p) => p.slug === slug)
+    if (project) {
+      let currentIndex = selectedProjects.indexOf(project)
+      let nextIndex = wrap(currentIndex + 1, selectedProjects.length)
+      return selectedProjects[nextIndex]
+    } else {
+      return false
+    }
+  }
+
+  eleventyConfig.addShortcode('nextProjectSlug', (slug, selectedProjects) => {
+    let next = nextProject(slug, selectedProjects)
+    return next ? next.slug : ''
+  })
+
+  eleventyConfig.addShortcode('nextProjectTitle', (slug, selectedProjects) => {
+    let next = nextProject(slug, selectedProjects)
+    return next ? next.title : ''
+  })
+
+  eleventyConfig.addShortcode('nextProjectColor', (slug, selectedProjects) => {
+    let next = nextProject(slug, selectedProjects)
+    return next ? next.themeColor : ''
+  })
 
   eleventyConfig.addPassthroughCopy({ 'src/assets/icons': '/' })
   eleventyConfig.addPassthroughCopy({ 'src/assets/videos': '/' })
