@@ -21,6 +21,12 @@ export default {
       type: 'string',
     },
     {
+      title: 'Link',
+      description: 'Add a link to the quoted article (optional)',
+      name: 'url',
+      type: 'url',
+    },
+    {
       title: 'Use smaller margin bottom?',
       name: 'isMarginSmall',
       type: 'boolean',

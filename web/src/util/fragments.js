@@ -65,5 +65,6 @@ module.exports.contentModules = `contentModules[] {
   _type == 'quote' => {
     quotation,
     attribution,
+    url,
   },
 }`
