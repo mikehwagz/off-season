@@ -35,9 +35,11 @@ class Tab extends Highway.Transition {
   }
 
   toRight({ from, to, duration, ease }) {
-    let isFooterVisible =
-      from.refs.footer && inview(from.refs.footer, app.getState().wh)
+    let { wh } = app.getState()
     let x = this.getX(to)
+    let isFromProject = from.refs.backLabel
+    let isFooterVisible = from.refs.footer && inview(from.refs.footer, wh)
+
     this.tl
       .set(from.refs.tabs.slice(from.index + 1, to.index + 1), {
         autoAlpha: 0,
@@ -48,6 +50,23 @@ class Tab extends Highway.Transition {
         willChange: 'transform',
       })
       .set(to.refs.navItems[from.index], { autoAlpha: 0 })
+
+    if (isFromProject) {
+      this.tl
+        .set(to.refs.workLabel, {
+          autoAlpha: 0,
+        })
+        .to(
+          to.refs.workLabel,
+          {
+            autoAlpha: 1,
+            duration,
+            delay: 0.1,
+            ease: `${ease}.inOut`,
+          },
+          'a',
+        )
+    }
 
     if (isFooterVisible) {
       this.tl.set(from.refs.footerGhost, { autoAlpha: 0 })
@@ -101,6 +120,7 @@ class Tab extends Highway.Transition {
   toLeft({ from, to, duration, ease }) {
     let isFooterVisible =
       from.refs.footer && inview(from.refs.footer, app.getState().wh)
+
     let x = this.getX(to)
     this.tl
       .set(from, { zIndex: 1 })
@@ -153,6 +173,19 @@ class Tab extends Highway.Transition {
       .set(to.refs.links, {
         yPercent: 100,
       })
+      .set(to.refs.workLabel, {
+        autoAlpha: 0,
+      })
+      .to(
+        to.refs.workLabel,
+        {
+          autoAlpha: 1,
+          duration,
+          delay: 0.1,
+          ease: `${ease}.inOut`,
+        },
+        'a',
+      )
       .to(
         from,
         {

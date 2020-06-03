@@ -9,9 +9,6 @@ class ToProject extends Highway.Transition {
     from.refs = choozy(from)
     to.refs = choozy(to)
 
-    console.log(from.refs.workLabel)
-    console.log(to.refs.backLabel)
-
     let tl = new gsap.timeline({
       onComplete: () => {
         from.remove()
@@ -65,14 +62,12 @@ class ToProject extends Highway.Transition {
         from.refs.workLabel,
         {
           duration,
-          // y: -10,
           ease: 'expo.inOut',
         },
         'a',
       ).to(
         to.refs.backLabel,
         {
-          // y: 0,
           autoAlpha: 1,
           duration,
           ease: 'expo.inOut',
