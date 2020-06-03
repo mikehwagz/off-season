@@ -3,6 +3,7 @@ import choozy from 'choozy'
 import gsap from 'gsap'
 import { rect, round, map } from '@selfaware/martha'
 import app from '@/app'
+import inview from '@/util/inview'
 
 class ToProject extends Highway.Transition {
   in({ trigger, from, to, done }) {
@@ -26,7 +27,11 @@ class ToProject extends Highway.Transition {
     let max = 1.5
     let duration = round(map(Math.abs(y), 0, app.getState().wh, min, max), 100)
 
-    if (from.refs.workLabel) {
+    let isFromWork = from.refs.workLabel
+    let isFooterVisible =
+      from.refs.footer && inview(from.refs.footer, app.getState().wh)
+
+    if (isFromWork) {
       tl.set(to.refs.backLabel, {
         autoAlpha: 0,
       })
@@ -37,8 +42,18 @@ class ToProject extends Highway.Transition {
       .set(to.refs.title, { y })
       .set(to.refs.content, { y: y + 100, autoAlpha: 0 })
       .set(to, { autoAlpha: 1 })
+
+    tl.to(
+      from.refs.inner,
+      {
+        duration: duration * 0.5,
+        autoAlpha: 0,
+        ease: 'expo',
+      },
+      'a',
+    )
       .to(
-        [from, img],
+        img,
         {
           duration: duration * 0.5,
           autoAlpha: 0,
@@ -57,7 +72,7 @@ class ToProject extends Highway.Transition {
         'a',
       )
 
-    if (from.refs.workLabel) {
+    if (isFromWork) {
       tl.to(
         from.refs.workLabel,
         {
@@ -76,6 +91,18 @@ class ToProject extends Highway.Transition {
       )
     }
 
+    if (isFooterVisible) {
+      tl.to(
+        from.refs.footer,
+        {
+          yPercent: 100,
+          duration,
+          ease: `expo.inOut`,
+        },
+        'a',
+      )
+    }
+
     tl.to(
       to.refs.content,
       {
@@ -88,8 +115,7 @@ class ToProject extends Highway.Transition {
     )
   }
 
-  out({ trigger, done }) {
-    this.title = trigger.textContent
+  out({ done }) {
     done()
   }
 }

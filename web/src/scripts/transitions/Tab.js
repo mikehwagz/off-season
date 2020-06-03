@@ -35,10 +35,10 @@ class Tab extends Highway.Transition {
   }
 
   toRight({ from, to, duration, ease }) {
-    let { wh } = app.getState()
     let x = this.getX(to)
     let isFromProject = from.refs.backLabel
-    let isFooterVisible = from.refs.footer && inview(from.refs.footer, wh)
+    let isFooterVisible =
+      from.refs.footer && inview(from.refs.footer, app.getState().wh)
 
     this.tl
       .set(from.refs.tabs.slice(from.index + 1, to.index + 1), {
