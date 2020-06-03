@@ -15,15 +15,24 @@
         href="/{{ item.slug }}"
         data-transition="tab"
       >
-        <div class="tab__label abs f32 lh100">
-          {% if loop.first and isProject %}
-            <span class="tab__arrow mr15">
-              {% include 'arrowBack.njk' %}
-            </span><span>Back</span>
+        {% set labelCx = 'tab__label abs f32 lh100' %}
+        {% if loop.first %}
+          {% if isProject %}
+            <div class="{% classNames labelCx, 'js-backLabel' %}">
+              <span class="tab__arrow mr15">
+                {% include 'arrowBack.njk' %}
+              </span><span>Back</span>
+            </div>
           {% else %}
-            <span class="tab__dot js-dots"></span><span>{{ item.title }}</span>
+            <div class="{% classNames labelCx, 'js-workLabel' %}">
+              <span class="tab__dot js-dots"></span><span>{{ item.title }}</span>
+            </div>
           {% endif %}
-        </div>
+        {% else %}
+          <div class="{% classNames labelCx %}">
+            <span class="tab__dot js-dots"></span><span>{{ item.title }}</span>
+          </div>
+        {% endif %}
       </a>
     </div>
   {% endfor %}

@@ -9,6 +9,9 @@ class ToProject extends Highway.Transition {
     from.refs = choozy(from)
     to.refs = choozy(to)
 
+    console.log(from.refs.workLabel)
+    console.log(to.refs.backLabel)
+
     let tl = new gsap.timeline({
       onComplete: () => {
         from.remove()
@@ -25,6 +28,12 @@ class ToProject extends Highway.Transition {
     let min = 1.1
     let max = 1.5
     let duration = round(map(Math.abs(y), 0, app.getState().wh, min, max), 100)
+
+    if (from.refs.workLabel) {
+      tl.set(to.refs.backLabel, {
+        autoAlpha: 0,
+      })
+    }
 
     tl.set(from.refs.scroll, { overflow: 'hidden' })
       .set(trigger, { autoAlpha: 0 })
@@ -50,16 +59,38 @@ class ToProject extends Highway.Transition {
         },
         'a',
       )
-      .to(
-        to.refs.content,
+
+    if (from.refs.workLabel) {
+      tl.to(
+        from.refs.workLabel,
         {
-          y: 0,
+          duration,
+          // y: -10,
+          ease: 'expo.inOut',
+        },
+        'a',
+      ).to(
+        to.refs.backLabel,
+        {
+          // y: 0,
           autoAlpha: 1,
           duration,
           ease: 'expo.inOut',
         },
         'a',
       )
+    }
+
+    tl.to(
+      to.refs.content,
+      {
+        y: 0,
+        autoAlpha: 1,
+        duration,
+        ease: 'expo.inOut',
+      },
+      'a',
+    )
   }
 
   out({ trigger, done }) {

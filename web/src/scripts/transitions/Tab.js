@@ -149,8 +149,6 @@ class Tab extends Highway.Transition {
   }
 
   projectToIndex({ from, to, duration, ease }) {
-    console.log('hi')
-
     this.tl
       .set(to.refs.links, {
         yPercent: 100,
