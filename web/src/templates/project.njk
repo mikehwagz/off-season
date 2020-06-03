@@ -11,34 +11,13 @@ renderData:
 <div class="abs fill" data-router-view="default">
 
   {% if project.password | length %}
-    <div class="fix fill bg-gray df jcc aic ph20 z10" data-component="password">
-      <form
-        class="signup__form x df max-w500 js-form"
-        autocomplete="off"
-      >
-        <input
-          class="signup__input x bb pv5"
-          name="password"
-          type="password"
-          aria-label="Password"
-          placeholder="Password"
-          required
-        >
-        <div>
-          <input name="hp" type="text" value="{% encode project.password %}" hidden>
-        </div>
-        <button class="signup__submit bb pv5 ph15" type="submit" aria-label="submit">
-          <div class="signup__arrow rel">
-            {% include 'arrowRight.njk' %}
-          </div>
-        </button>
-      </form>
-    </div>
+    {% include 'password.njk' %}
   {% endif %}
 
   {% set active = 0 %}
   {% set total = site.pages | length %}
   {% set diff = total - active %}
+  {% set isProject = true %}
   
   {% include 'nav.njk' %}
 
@@ -111,7 +90,7 @@ renderData:
               <div class="f18 lh133 ttu df aic mb50">
                 Next project
                 <div class="signup__arrow ml20">
-                  {% include 'arrowRight.njk' %}
+                  {% include 'arrowPagi.njk' %}
                 </div>
               </div>
               <style>
