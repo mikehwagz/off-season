@@ -15,19 +15,33 @@ class Tab extends Highway.Transition {
 
     this.tl = new gsap.timeline({
       onComplete: () => {
+        gsap.set(to.refs.tabs, { clearProps: 'backgroundColor' })
         from.remove()
         done()
       },
     })
 
-    this.tl.set(to, { autoAlpha: 1 })
-    this.tl.set(from.refs.scroll, { overflow: 'hidden' })
+    let p = (_, i) => i !== from.index && i !== to.index
 
+    this.tl
+      .set(to, { autoAlpha: 1 })
+      .set(from.refs.scroll, { overflow: 'hidden' })
+      .set([from.refs.tabs.filter(p), to.refs.tabs.filter(p)].flat(), {
+        backgroundColor: '#f1f1f1',
+      })
+
+    to.refs.visibleFullBleedModules = this.getVisibleFullBleedModules(
+      to.refs.fullBleed,
+      app.getState().wh,
+    )
+
+    let duration = 0.8
     let direction = to.index - from.index
+    let ease = 'expo'
 
     this[
       direction > 0 ? 'toRight' : direction < 0 ? 'toLeft' : 'projectToIndex'
-    ]({ from, to, duration: 0.8, ease: 'expo' })
+    ]({ from, to, duration, ease })
   }
 
   out({ done }) {
@@ -58,11 +72,17 @@ class Tab extends Highway.Transition {
 
     if (isFromProject) {
       this.tl
-        .set(to.refs.workLabel, {
-          autoAlpha: 0,
-        })
         .to(
-          to.refs.workLabel,
+          from.refs.backLabel,
+          {
+            autoAlpha: 0,
+            duration,
+            ease: 'expo',
+          },
+          'a',
+        )
+        .to(
+          to.refs.navItems[from.index],
           {
             autoAlpha: 1,
             duration,
@@ -98,12 +118,24 @@ class Tab extends Highway.Transition {
       )
     }
 
-    this.tl
-      .to(
-        to.refs.navItems[from.index],
+    if (to.refs.visibleFullBleedModules.length) {
+      this.tl.set(to.refs.visibleFullBleedModules, { autoAlpha: 0 }).to(
+        to.refs.visibleFullBleedModules,
         {
           autoAlpha: 1,
-          duration: isFromProject ? duration : duration * 0.5,
+          duration,
+          ease: `${ease}.inOut`,
+        },
+        'a',
+      )
+    }
+
+    this.tl
+      .set(
+        from.refs.dots[from.index],
+        {
+          backgroundColor: 'rgba(0, 0, 0, 0)',
+          duration,
           ease,
         },
         'a',
@@ -135,24 +167,52 @@ class Tab extends Highway.Transition {
   }
 
   toLeft({ from, to, duration, ease }) {
-    let isFooterVisible =
-      from.refs.footer && inview(from.refs.footer, app.getState().wh)
-
+    let wh = app.getState().wh
     let x = this.getX(to)
+    let isFooterVisible = from.refs.footer && inview(from.refs.footer, wh)
+    let visibleFullBleedModules = this.getVisibleFullBleedModules(
+      from.refs.fullBleed,
+      wh,
+    )
+
     this.tl
       .set(from, { zIndex: 1 })
       .set(from.refs.tabs.slice(to.index + 1, from.index + 1), {
         willChange: 'transform',
       })
       .set(to.refs.tabs, { autoAlpha: 0 })
-      .set(from.refs.dots[to.index], { backgroundColor: '#000' })
-      .set(from.refs.dots[from.index], { backgroundColor: '#f1f1f1' })
+      .set(from.refs.dots[to.index], { backgroundColor: 'rgba(0,0,0,1)' })
+      .set(from.refs.dots[from.index], { backgroundColor: 'rgba(0,0,0,0)' })
 
     if (isFooterVisible) {
       this.tl.to(
         from.refs.footer,
         {
           yPercent: 100,
+          duration,
+          ease: `${ease}.inOut`,
+        },
+        'a',
+      )
+    }
+
+    if (visibleFullBleedModules.length) {
+      this.tl.to(
+        visibleFullBleedModules,
+        {
+          duration,
+          autoAlpha: 0,
+          ease: `${ease}.inOut`,
+        },
+        'a',
+      )
+    }
+
+    if (to.refs.visibleFullBleedModules.length) {
+      this.tl.set(to.refs.visibleFullBleedModules, { autoAlpha: 0 }).to(
+        to.refs.visibleFullBleedModules,
+        {
+          autoAlpha: 1,
           duration,
           ease: `${ease}.inOut`,
         },

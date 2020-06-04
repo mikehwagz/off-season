@@ -9,8 +9,7 @@
       <a
         class="{% classNames
           'tab db pea js-tabs',
-          '' if loop.first else 'bl',
-          '' if active == loop.index0 else 'bg-gray'
+          '' if loop.first else 'bl'
         %}" 
         href="/{{ item.slug }}"
         data-transition="tab"
