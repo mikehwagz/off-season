@@ -76,8 +76,9 @@ class ToProject extends Highway.Transition {
       tl.to(
         from.refs.workLabel,
         {
+          autoAlpha: 0,
           duration,
-          ease: 'expo.inOut',
+          ease: 'expo',
         },
         'a',
       ).to(
