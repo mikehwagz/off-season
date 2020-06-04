@@ -44,7 +44,7 @@ class Tab extends Highway.Transition {
       .set(from.refs.tabs.slice(from.index + 1, to.index + 1), {
         autoAlpha: 0,
       })
-      .set(to.refs.inner, { x, willChange: 'transform' })
+      .set(to.refs.inner, { x })
       .set(to.refs.tabs.slice(from.index + 1, to.index + 1), {
         x,
         willChange: 'transform',
@@ -86,7 +86,7 @@ class Tab extends Highway.Transition {
         to.refs.navItems[from.index],
         {
           autoAlpha: 1,
-          duration: duration * 0.5,
+          duration: isFromProject ? duration : duration * 0.5,
           ease,
         },
         'a',
@@ -124,7 +124,6 @@ class Tab extends Highway.Transition {
     let x = this.getX(to)
     this.tl
       .set(from, { zIndex: 1 })
-      .set(from.refs.inner, { willChange: 'transform' })
       .set(from.refs.tabs.slice(to.index + 1, from.index + 1), {
         willChange: 'transform',
       })

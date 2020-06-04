@@ -86,6 +86,7 @@ class ToProject extends Highway.Transition {
         {
           autoAlpha: 1,
           duration,
+          delay: 0.1,
           ease: 'expo.inOut',
         },
         'a',

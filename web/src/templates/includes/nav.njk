@@ -18,13 +18,13 @@
         {% set labelCx = 'tab__label abs f32 lh100' %}
         {% if loop.first %}
           {% if isProject %}
-            <div class="{% classNames labelCx, 'js-backLabel' %}">
+            <div class="{% classNames labelCx, 'wco js-backLabel' %}">
               <span class="tab__arrow mr15">
                 {% include 'arrowBack.njk' %}
               </span><span>Back</span>
             </div>
           {% else %}
-            <div class="{% classNames labelCx, 'js-workLabel' %}">
+            <div class="{% classNames labelCx, 'wco js-workLabel' %}">
               <span class="tab__dot js-dots"></span><span>{{ item.title }}</span>
             </div>
           {% endif %}
