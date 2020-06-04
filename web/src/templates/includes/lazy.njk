@@ -6,13 +6,13 @@
   data-component="lazy"
 >
   <div class="lazy__lqip ro js-lqip" aria-hidden="true">
-    <img class="x y o-cover" src="{% urlFor image, 32, 50 %}">
+    <img class="x y o-cover" src="{{ image.metadata.lqip }}">
   </div>
   <div class="ro">
     <img
       class="lazy__img x y o-cover o0 js-img"
-      srcset="{% urlFor image, width %},
-              {% urlFor image, width * 2 %} 2x"
+      data-srcset="{% urlFor image, width %},
+                   {% urlFor image, width * 2 %} 2x"
       data-src="{% urlFor image, width * 2 %}"
       alt="{{ image.altText }}"
     >

@@ -9,7 +9,7 @@
       {% include 'mark.njk' %}
     </div>
 
-    {% for project in projects %}
+    {% for project in selectedProjects %}
       <div class="ro dn js-thumb" data-id="{{ project.slug }}">
         {% set width = 360 %}
         {% set cx = 'r--1x1' %}

@@ -35,10 +35,15 @@ class Tab extends Highway.Transition {
   }
 
   toRight({ from, to, duration, ease }) {
+    let wh = app.getState().wh
     let x = this.getX(to)
     let isFromProject = from.refs.backLabel
-    let isFooterVisible =
-      from.refs.footer && inview(from.refs.footer, app.getState().wh)
+    let isFooterVisible = from.refs.footer && inview(from.refs.footer, wh)
+
+    let visibleFullBleedModules = this.getVisibleFullBleedModules(
+      from.refs.fullBleed,
+      wh,
+    )
 
     this.tl
       .set(from.refs.tabs.slice(from.index + 1, to.index + 1), {
@@ -75,6 +80,18 @@ class Tab extends Highway.Transition {
         {
           yPercent: 100,
           duration,
+          ease: `${ease}.inOut`,
+        },
+        'a',
+      )
+    }
+
+    if (visibleFullBleedModules.length) {
+      this.tl.to(
+        visibleFullBleedModules,
+        {
+          duration,
+          autoAlpha: 0,
           ease: `${ease}.inOut`,
         },
         'a',
@@ -214,6 +231,18 @@ class Tab extends Highway.Transition {
     let navItemRect = rect(to.refs.navItems[to.index])
     let tabRect = rect(to.refs.tabs[to.index])
     return navItemRect.width - tabRect.width
+  }
+
+  getVisibleFullBleedModules(els, wh) {
+    if (!els) {
+      return []
+    }
+
+    if (els.constructor !== Array) {
+      els = [els]
+    }
+
+    return els.filter((el) => inview(el, wh))
   }
 }
 

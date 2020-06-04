@@ -27,5 +27,6 @@ export default component((node, ctx) => {
       })
     }
     img.src = img.dataset.src
+    img.srcset = img.dataset.srcset
   }
 })
