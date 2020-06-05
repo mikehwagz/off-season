@@ -1,7 +1,12 @@
 .badge {
-  width: 13rem;
-  height: 13rem;
   transform: rotate(16deg);
-  right: 3rem;
-  bottom: 3rem;
+  width: 11rem;
+  height: 11rem;
+
+  @media (query('l')) {
+    right: 3rem;
+    bottom: 3rem;
+    width: 13rem;
+    height: 13rem;
+  }
 }

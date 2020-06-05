@@ -8,6 +8,14 @@
 
 html {
   font-size: 10px;
+
+  @media (query('l')) {
+    font-size: 10 / 1440 * 100vw;
+  }
+
+  @media (query('xl')) {
+    font-size: 10px;
+  }
 }
 
 html,
@@ -52,9 +60,30 @@ a {
 }
 
 .main {
-  width: calc(100% - 35rem);
+  width: 100%;
+
+  @media (query('l')) {
+    width: calc(100% - 35rem);
+  }
 }
 
 .footer {
-  height: 35rem;
+  @media (query('l')) {
+    height: 35rem;
+  }
+}
+
+.p-tabs {
+  $tab-width: 5.5rem;
+  @each $dir in 'left', 'right' {
+    &__#{str-slice($dir, 1, 1)} {
+      @for $i from 0 through 3 {
+        &--#{$i} {
+          @media (query('l')) {
+            padding-#{$dir}: $i * $tab-width;
+          }
+        }
+      }
+    }
+  }
 }

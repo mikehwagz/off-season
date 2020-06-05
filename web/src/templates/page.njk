@@ -18,10 +18,7 @@ renderData:
   {% include 'nav.njk' %}
 
   <div class="abs fill oy js-scroll">
-    <div
-      class="x min-vh100"
-      style="padding-left: {{ 5.5 * active }}rem; padding-right: {{ 5.5 * diff }}rem;"
-    >
+    <div class="x min-vh100 p-tabs__l--{{ active }} p-tabs__r--{{ diff }}">
       <div class="pt45 bg-gray wcto js-inner">
         {% set modules = p.contentModules %}
         {% include 'contentModules.njk' %}

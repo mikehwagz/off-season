@@ -4,7 +4,7 @@
   <div class="{% 
     classNames 
       'pb20' if type == 'heading' else paddingBottom,
-      '' if type == 'fullBleed' else 'ph115'
+      '' if type == 'fullBleed' else 'ph20 l:ph115'
   %}">
     {% set moduleTemplate %}
       {% include type + '.njk' ignore missing %}

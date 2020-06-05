@@ -22,19 +22,16 @@ renderData:
   {% include 'nav.njk' %}
 
   <div class="abs fill oy js-scroll">
-    <div
-      class="x min-vh100"
-      style="padding-left: {{ 5.5 * active }}rem; padding-right: {{ 5.5 * diff }}rem;"
-    >
+    <div class="x min-vh100 p-tabs__l--{{ active }} p-tabs__r--{{ diff }}">
       <div class="pt30 wcto js-inner">
         <h1
-          class="sans f92 lh102 wct pt15 mb35 ph115 js-title"
+          class="sans f40 l:f92 lh110 l:lh102 wct pt10 l:pt15 mb35 ph20 l:ph115 js-title"
           style="color: {{ project.themeColor }}"
         >
           {{ project.title }}
         </h1>
         <div class="wcto js-content">
-          <div class="ph115">
+          <div class="ph20 l:ph115">
             {% if project.introText.content %}
               <div class="f24 lh125 mb50">
                 {% blocksToHtml project.introText.content %}
@@ -86,7 +83,7 @@ renderData:
           {% set nextProjectColor %}{% nextProjectColor project.slug, selectedProjects %}{% endset %}
 
           {% if nextProjectSlug | length %}
-            <div class="pt40 pb180 ph115">
+            <div class="pt40 pb180 ph20 l:ph115">
               <div class="f18 lh133 ttu df aic mb50">
                 Next project
                 <div class="signup__arrow ml20">
@@ -101,7 +98,7 @@ renderData:
               </style>
               <a
                 id="pagi-{{ nextProjectSlug }}"
-                class="sans f92 lh102 wct pt15"
+                class="sans f40 l:f92 lh110 l:lh102 wct pt10 l:pt15"
                 href="/project/{{ nextProjectSlug }}"
                 data-transition="toProject"
               >
