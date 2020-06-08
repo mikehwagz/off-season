@@ -1,0 +1,43 @@
+.burger {
+  &__inner {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 3rem;
+    height: 1.9rem;
+  }
+
+  &__top-bun,
+  &__patty,
+  &__bottom-bun {
+    display: block;
+    width: 100%;
+    height: 1px;
+    background-color: $black;
+  }
+
+  &__top-bun,
+  &__bottom-bun {
+    transition: transform 0.5s $ease-out-quint;
+    will-change: transform;
+  }
+
+  &__patty {
+    transition: opacity 0.25s $ease-out-quint;
+    will-change: opacity;
+  }
+
+  body.is-nav-open & {
+    &__top-bun {
+      transform: translateY(9px) rotate(45deg);
+    }
+
+    &__patty {
+      opacity: 0;
+    }
+
+    &__bottom-bun {
+      transform: translateY(-9px) rotate(-45deg);
+    }
+  }
+}

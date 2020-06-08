@@ -1,7 +1,7 @@
 import Highway from '@dogstudio/highway'
 import choozy from 'choozy'
 import gsap from 'gsap'
-import { rect, round, map } from '@selfaware/martha'
+import { rect, round, map, has } from '@selfaware/martha'
 import app from '@/app'
 import inview from '@/util/inview'
 
@@ -18,8 +18,11 @@ class ToProject extends Highway.Transition {
     })
 
     let img = document.querySelector(`[data-id="${trigger.id}"]`)
+    let title = trigger.hasAttribute('data-title')
+      ? trigger
+      : trigger.querySelector('[data-title]')
 
-    let first = rect(trigger).top
+    let first = rect(title).top
     let last = rect(to.refs.title).top
     let y = Math.round(first - last)
 
@@ -38,7 +41,7 @@ class ToProject extends Highway.Transition {
     }
 
     tl.set(from.refs.scroll, { overflow: 'hidden' })
-      .set(trigger, { autoAlpha: 0 })
+      .set(title, { autoAlpha: 0 })
       .set(to.refs.title, { y })
       .set(to.refs.content, { y: y + 100, autoAlpha: 0 })
       .set(to, { autoAlpha: 1 })
@@ -52,7 +55,9 @@ class ToProject extends Highway.Transition {
       },
       'a',
     )
-      .to(
+
+    if (img) {
+      tl.to(
         img,
         {
           duration: duration * 0.5,
@@ -62,15 +67,17 @@ class ToProject extends Highway.Transition {
         },
         'a',
       )
-      .to(
-        to.refs.title,
-        {
-          y: 0,
-          duration,
-          ease: 'expo.inOut',
-        },
-        'a',
-      )
+    }
+
+    tl.to(
+      to.refs.title,
+      {
+        y: 0,
+        duration,
+        ease: 'expo.inOut',
+      },
+      'a',
+    )
 
     if (isFromWork) {
       tl.to(

@@ -1,4 +1,4 @@
-<div class="sidebar fix fill-y pt-nav br df fc">
+<div class="sidebar fix fill-y pt-nav br dn l:df fc">
   <div class="pt45 ph30 y bb">
     <p class="f22 lh127">
       {{ site.sidebarText }}
@@ -6,6 +6,7 @@
   </div>
   <div class="r r--1x1">
     <div class="ro bg-gray pv50 ph35">
+      {% set eventType = 'mousemove' %}
       {% include 'mark.njk' %}
     </div>
 

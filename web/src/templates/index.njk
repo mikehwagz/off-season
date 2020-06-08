@@ -11,14 +11,19 @@ title: Work
   {% include 'nav.njk' %}
 
   <div class="abs fill oy js-scroll">
-    <div
-      class="x min-vh100"
-      style="padding-left: {{ 5.5 * active }}rem; padding-right: {{ 5.5 * diff }}rem;"
-    >
-      <div class="pt30 wco js-inner">
-        <ul class="mb100">
+    <div class="x min-vh100 p-tabs__l--{{ active }} p-tabs__r--{{ diff }}">
+      <div class="pt25 l:pt30 wco js-inner">
+        <div class="db l:dn bb mb25 pb30 ph20">
+          <p class="f18 lh133 max-w500">{{ site.sidebarText }}</p>
+        </div>
+        <div class="db l:dn">
+          <h1 class="tab__label f24 lh100 ph20 mb15">
+            <span class="tab__dot"></span>Work<span></span>
+          </h1>
+        </div>
+        <ul class="mb70 l:mb100">
           {% for project in selectedProjects %}
-            <li class="oh ph115">
+            <li class="oh ph20 l:ph115">
               <style>
                 #{{ project.slug }}:hover,
                 #{{ project.slug }}:focus {
@@ -26,8 +31,9 @@ title: Work
                 }
               </style>
               <a
+                data-title
                 id="{{ project.slug }}"
-                class="dib sans f92 lh102 pv15 js-links"
+                class="dib sans f40 l:f92 lh110 l:lh102 pv10 l:pv15 js-links"
                 href="/project/{{ project.slug }}/"
                 data-transition="toProject"
                 data-component="projectLink"
