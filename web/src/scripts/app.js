@@ -9,6 +9,7 @@ import videoModule from '@/components/videoModule'
 import slideshow from '@/components/slideshow'
 import lazy from '@/components/lazy'
 import password from '@/components/password'
+import header from '@/components/header'
 
 const components = {
   mark,
@@ -19,11 +20,13 @@ const components = {
   slideshow,
   lazy,
   password,
+  header,
 }
 
 const state = {
   ...size(),
   t: 0,
+  navOpen: false,
 }
 
 export default picoapp(components, state)

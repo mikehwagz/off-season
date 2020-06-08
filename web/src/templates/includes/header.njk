@@ -1,5 +1,18 @@
-<header class="fix top fill-x df jcc aic pt15 l:pt10 pb10 l:pb5 bb bg-gray z10">
-  <a href="/" class="f24 ttu db l:dn" data-transition="tab">{{ site.mobileHeaderText }}</a>
-  <a href="/" class="f32 ttu dn l:db" data-transition="tab">{{ site.headerText }}</a>
-  <p class="clock f22 abs right pr15 dn l:db" data-component="clock"></p>
+<header class="fix top fill-x z10" data-component="header">
+  <div class="df jcc aic pt15 l:pt10 pb10 l:pb5 bb rel z1 bg-gray">
+    <button
+      class="burger abs left fill-y pv15 ph20 df l:dn z2 js-burger"
+      aria-label="navigation"
+    >
+      <span class="burger__inner">
+        <span class="burger__top-bun"></span>
+        <span class="burger__patty"></span>
+        <span class="burger__bottom-bun"></span>
+      </span>
+    </button>
+    <a href="/" class="f24 ttu db l:dn">{{ site.mobileHeaderText }}</a>
+    <a href="/" class="f32 ttu dn l:db" data-transition="tab">{{ site.headerText }}</a>
+    <p class="clock f22 abs right pr15 dn l:db" data-component="clock"></p>
+  </div>
+  {% include 'mobileNav.njk' %}
 </header>

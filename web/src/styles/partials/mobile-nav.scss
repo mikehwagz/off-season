@@ -1,0 +1,26 @@
+.mobile-nav {
+  opacity: 0;
+  transition: opacity 0.5s $ease-out-quint;
+  will-change: opacity;
+  pointer-events: none;
+
+  body.is-nav-open & {
+    pointer-events: auto;
+    opacity: 1;
+  }
+
+  &__dot {
+    width: 0.375em;
+    height: 0.375em;
+    background-color: rgba($black, 0);
+    transition: background-color 0.2s ease;
+
+    .is-active & {
+      background-color: $black;
+    }
+  }
+
+  &__mark {
+    width: 20rem;
+  }
+}

@@ -1,0 +1,17 @@
+<nav class="mobile-nav fix pt-nav fill bg-gray df fc l:dn">
+  <ul>
+    {% for item in site.nav %}
+      <li>
+        <a class="df aic f32 lh100 bb pt20 pb15 ph30 js-mobileNavLinks" href="/{{ item.slug }}">
+          <span class="mobile-nav__dot dib ba br50 mr15"></span><span>{{ item.title }}</span>
+        </a>
+      </li>
+    {% endfor %}
+  </ul>
+  <div class="df jcc aic fg1">
+    <div class="mobile-nav__mark">
+      {% set eventType = 'deviceorientation' %}
+      {% include 'mark.njk' %}
+    </div>
+  </div>
+</nav>

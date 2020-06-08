@@ -43,6 +43,12 @@ a {
   text-decoration: none;
 }
 
+a,
+button,
+input {
+  outline-color: $black;
+}
+
 .pt-nav {
   padding-top: 4.8rem;
 }
