@@ -25,7 +25,7 @@ renderData:
     <div class="x min-vh100 p-tabs__l--{{ active }} p-tabs__r--{{ diff }}">
       <div class="pt30 wcto js-inner">
         <h1
-          class="sans f40 l:f92 lh110 l:lh102 wct pt10 l:pt15 mb35 ph20 l:ph115 js-title"
+          class="sans f40 l:f92 lh110 l:lh102 wct pt10 l:pt15 mb25 l:mb35 ph20 l:ph115 js-title"
           style="color: {{ project.themeColor }}"
         >
           {{ project.title }}
@@ -33,13 +33,13 @@ renderData:
         <div class="wcto js-content">
           <div class="ph20 l:ph115">
             {% if project.introText.content %}
-              <div class="f24 lh125 mb50">
+              <div class="f20 l:f24 lh130 l:lh125 mb40 l:mb50">
                 {% blocksToHtml project.introText.content %}
               </div>
             {% endif %}
             <ul class="colophon pb40">
               {% if project.roles %}
-                <li class="colophon__item mb30">
+                <li class="colophon__item mb20 l:mb30">
                   <h3 class="f18 lh133 ttu mb10">Our Role</h3>
                   <div class="f18 lh133">
                     {% set comma = joiner() %}
@@ -50,7 +50,7 @@ renderData:
                 </li>
               {% endif %}
               {% if project.management.content %}
-                <li class="colophon__item mb30">
+                <li class="colophon__item mb20 l:mb30">
                   <h3 class="f18 lh133 ttu mb10">Management</h3>
                   <div class="f18 lh133">
                     {% blocksToHtml project.management.content %}
@@ -58,13 +58,13 @@ renderData:
                 </li>
               {% endif %}
               {% if project.year %}
-                <li class="colophon__item mb30">
+                <li class="colophon__item mb20 l:mb30">
                   <h3 class="f18 lh133 ttu mb10">Year</h3>
                   <div class="f18 lh133">{{ project.year }}</div>
                 </li>
               {% endif %}
               {% if project.team.content %}
-                <li class="colophon__item mb30">
+                <li class="colophon__item mb20 l:mb30">
                   <h3 class="f18 lh133 ttu mb10">Team</h3>
                   <div class="f18 lh133">
                     {% blocksToHtml project.team.content %}
@@ -83,28 +83,28 @@ renderData:
           {% set nextProjectColor %}{% nextProjectColor project.slug, selectedProjects %}{% endset %}
 
           {% if nextProjectSlug | length %}
-            <div class="pt40 pb180 ph20 l:ph115">
-              <div class="f18 lh133 ttu df aic mb50">
+            <style>
+              #pagi-{{ nextProjectSlug }}:hover .pagi-title,
+              #pagi-{{ nextProjectSlug }}:focus .pagi-title {
+                color: {{ nextProjectColor }};
+              }
+            </style>
+            <a
+              id="pagi-{{ nextProjectSlug }}"
+              class="db pt30 l:pt40 pb100 l:pb180 ph20 l:ph115"
+              href="/project/{{ nextProjectSlug }}"
+              data-transition="toProject"
+            >
+              <div class="f18 lh133 ttu df aic mb30 l:mb50">
                 Next project
                 <div class="signup__arrow ml20">
                   {% include 'arrowPagi.njk' %}
                 </div>
               </div>
-              <style>
-                #pagi-{{ nextProjectSlug }}:hover,
-                #pagi-{{ nextProjectSlug }}:focus {
-                  color: {{ nextProjectColor }};
-                }
-              </style>
-              <a
-                id="pagi-{{ nextProjectSlug }}"
-                class="sans f40 l:f92 lh110 l:lh102 wct pt10 l:pt15"
-                href="/project/{{ nextProjectSlug }}"
-                data-transition="toProject"
-              >
+              <div class="pagi-title sans f40 l:f92 lh110 l:lh102 wct pt10 l:pt15" data-title>
                 {{ nextProjectTitle }}
-              </a>
-            </div>
+              </div>
+            </a>
           {% endif %}
 
         </div>

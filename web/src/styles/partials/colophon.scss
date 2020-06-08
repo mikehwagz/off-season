@@ -1,6 +1,8 @@
 .colophon {
-  column-count: 2;
-  column-fill: balance;
+  @media (query('l')) {
+    column-count: 2;
+    column-fill: balance;
+  }
 
   &__item {
     break-inside: avoid-column; /* required to prevent items from breaking to next column */

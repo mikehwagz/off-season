@@ -1,9 +1,9 @@
 {% for module in modules %}
   {% set type = module._type %}
-  {% set paddingBottom = 'pb45' if module.isMarginSmall else 'pb125' %}
+  {% set paddingBottom = 'pb40 l:pb45' if module.isMarginSmall else 'pb70 l:pb125' %}
   <div class="{% 
     classNames 
-      'pb20' if type == 'heading' else paddingBottom,
+      'pb15 l:pb20' if type == 'heading' else paddingBottom,
       '' if type == 'fullBleed' else 'ph20 l:ph115'
   %}">
     {% set moduleTemplate %}
@@ -11,8 +11,6 @@
     {% endset %}
     {% if moduleTemplate | trim | length %}
       {{ moduleTemplate | safe }}
-    {% else %}
-      <p class="f24 sans ttu o20">{{ type }} Module</p>
     {% endif %}
   </div>
 {% endfor %}

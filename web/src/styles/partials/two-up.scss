@@ -6,11 +6,15 @@
 
     &--image-text {
       &:nth-child(1) {
-        width: 61%;
+        @media (query('s')) {
+          width: 61%;
+        }
       }
 
       &:nth-child(2) {
-        width: 39%;
+        @media (query('s')) {
+          width: 39%;
+        }
       }
     }
   }
