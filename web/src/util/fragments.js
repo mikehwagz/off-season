@@ -37,6 +37,7 @@ const contentModules = groq`contentModules[] {
     'caption': caption.content,
   },
   _type == 'slideshow' => {
+    isWidthSmall,
     images[] {
       ...image.asset->,
       altText,

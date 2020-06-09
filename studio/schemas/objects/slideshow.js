@@ -21,6 +21,11 @@ export default {
       name: 'isMarginSmall',
       type: 'boolean',
     },
+    {
+      title: 'Use smaller width?',
+      name: 'isWidthSmall',
+      type: 'boolean',
+    },
   ],
   preview: {
     select: {

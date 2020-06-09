@@ -1,4 +1,10 @@
-<div class="slideshow" data-component="slideshow">
+<div 
+  class="{% classNames 
+    'slideshow',
+    'slideshow--sm' if module.isWidthSmall
+  %}"
+  data-component="slideshow"
+>
   <div class="slideshow__slides rel">
     {% for image in module.images %}
       <div

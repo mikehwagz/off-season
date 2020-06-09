@@ -1,4 +1,10 @@
 .slideshow {
+  &--sm {
+    @media (query('s')) {
+      width: 61%;
+    }
+  }
+
   &__slide {
     &[aria-hidden='true'] {
       display: none;
