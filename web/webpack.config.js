@@ -119,7 +119,7 @@ if (isProd) {
   module.exports.plugins.push(
     new PurgecssPlugin({
       paths: () => glob.sync(`${paths.src}/**/*`, { nodir: true }),
-      whitelistPatterns: [/^is-/],
+      whitelistPatterns: [/^is-/, /^p-tabs/],
       defaultExtractor: (content) => content.match(/[\w-/:]+(?<!:)/g) || [],
     }),
   )
