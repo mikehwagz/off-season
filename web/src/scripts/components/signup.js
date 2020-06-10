@@ -6,37 +6,47 @@ import createWave from '@/lib/wave'
 
 export default component((node, ctx) => {
   const refs = choozy(node)
+  let isSubmitting = false
 
   let offSubmit = on(refs.form, 'submit', (ev) => {
     ev.preventDefault()
+
+    if (isSubmitting) return
+
+    isSubmitting = true
 
     Promise.all([postToGoogleSheet(refs), showLoader(refs, ctx)]).then(
       ([res]) => {
         window.offWave()
 
-        gsap.to(refs.form, {
-          duration: 0.3,
-          ease: 'quint.inOut',
-          y: -10,
-          autoAlpha: 0,
-          onComplete: () => {
-            window.destroyLoader()
-          },
+        Promise.all([
+          gsap
+            .to(refs.form, {
+              duration: 0.3,
+              ease: 'quint.inOut',
+              y: -10,
+              autoAlpha: 0,
+            })
+            .then(),
+          gsap
+            .fromTo(
+              refs.success,
+              {
+                autoAlpha: 0,
+                y: 10,
+              },
+              {
+                duration: 0.3,
+                ease: 'quint.inOut',
+                autoAlpha: 1,
+                y: 0,
+              },
+            )
+            .then(),
+        ]).then(() => {
+          window.destroyLoader()
+          isSubmitting = false
         })
-
-        gsap.fromTo(
-          refs.success,
-          {
-            autoAlpha: 0,
-            y: 10,
-          },
-          {
-            duration: 0.3,
-            ease: 'quint.inOut',
-            autoAlpha: 1,
-            y: 0,
-          },
-        )
       },
     )
   })
