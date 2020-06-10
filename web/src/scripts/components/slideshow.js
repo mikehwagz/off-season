@@ -2,11 +2,13 @@ import { component } from 'picoapp'
 import choozy from 'choozy'
 import { on, wrap } from '@selfaware/martha'
 import gsap from 'gsap'
+import inview from '@/util/inview'
 
 export default component((node, ctx) => {
   let { inc, dec, slides, progressBars } = choozy(node)
   let tl = gsap.timeline()
   let isPaused = false
+  let isInitial = true
   let pauseThreshold = 300
   let pauseTimeout = null
   let i = 0
@@ -16,7 +18,18 @@ export default component((node, ctx) => {
   let offIncUp = on(inc, 'pointerup', up(1))
   let offDecUp = on(dec, 'pointerup', up(-1))
 
-  set(0)
+  ctx.on('tick', ({ wh }) => {
+    if (inview(node, wh)) {
+      if (isInitial) {
+        set(i)
+        isInitial = false
+      } else {
+        isPaused && up()()
+      }
+    } else {
+      down()
+    }
+  })
 
   return () => {
     offIncDown()
