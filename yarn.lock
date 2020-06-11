@@ -1823,10 +1823,10 @@
     "@sanity/util" "1.149.16"
     loader-utils "1.1.0"
 
-"@selfaware/martha@^0.0.5":
-  version "0.0.5"
-  resolved "https://registry.yarnpkg.com/@selfaware/martha/-/martha-0.0.5.tgz#464f7f5e9a03a63a7b68b7b4071d26e962c8ded0"
-  integrity sha512-EgrciBhySuJ6oNO7Qtuk/p29neZAHdSw1j3SKN5mZe8sqVtxL6tobDlOYISXgWCWfFLA3t3vuJrtTCmBLA0oLw==
+"@selfaware/martha@^0.0.7":
+  version "0.0.7"
+  resolved "https://registry.yarnpkg.com/@selfaware/martha/-/martha-0.0.7.tgz#c34ccba0c9893e6a82699b319057eece661cf7d1"
+  integrity sha512-imPq04wWDnJ3K5B1yFM+iUc+ZYtGAdne5WPqw+q6Kf4TlXaLCppBRqjBdl95mdNkkDXyNH1lyiTReI+PHF9UjA==
 
 "@selfaware/wool@^1.0.3":
   version "1.0.3"

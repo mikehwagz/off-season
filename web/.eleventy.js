@@ -68,6 +68,7 @@ module.exports = function(eleventyConfig) {
                 className: 'inline-link',
                 href: `mailto:${mark.email}`,
                 'data-component': 'emailLink',
+                'data-router-disabled': null,
               },
               children,
             ),
