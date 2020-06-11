@@ -15,21 +15,3 @@
   font-style: normal;
   font-display: swap;
 }
-
-@font-face {
-  font-family: 'Panama Mono';
-  src: url('../assets/fonts/PanamaDemo-Monospace.woff2') format('woff2'),
-    url('../assets/fonts/PanamaDemo-Monospace.woff') format('woff');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: 'Panama Regular';
-  src: url('../assets/fonts/PanamaDemo-Italic.woff2') format('woff2'),
-    url('../assets/fonts/PanamaDemo-Italic.woff') format('woff');
-  font-weight: normal;
-  font-style: italic;
-  font-display: swap;
-}

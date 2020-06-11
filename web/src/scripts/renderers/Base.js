@@ -3,6 +3,7 @@ import { on, size, add, remove } from '@selfaware/martha'
 import gsap from 'gsap'
 import app from '@/app'
 import { listen } from 'quicklink'
+import loadFonts from '@/lib/loadFonts'
 
 class Base extends Highway.Renderer {
   onFirstLoad() {
@@ -17,10 +18,15 @@ class Base extends Highway.Renderer {
     // setup render loop
     gsap.ticker.add(this.tick)
 
-    // mount app
-    this.mount()
-
     gsap.set('[data-router-view]', { autoAlpha: 1 })
+
+    loadFonts().then(() => {
+      // mount app
+      this.mount()
+
+      // animate in
+      remove(document.body, 'o0')
+    })
   }
 
   onEnter() {}

@@ -20,6 +20,7 @@
     "@selfaware/martha": "^0.0.7",
     "@selfaware/wool": "^1.0.3",
     "choozy": "^0.0.6",
+    "fontfaceobserver": "^2.1.0",
     "gsap": "^3.2.5",
     "picoapp": "^3.6.2",
     "quicklink": "^2.0.0"
