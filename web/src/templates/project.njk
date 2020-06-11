@@ -45,7 +45,7 @@ renderData:
             <ul class="colophon pb40">
               {% if project.roles %}
                 <li class="colophon__item mb20 l:mb30">
-                  <h3 class="f18 lh133 ttu mb10">Our Role</h3>
+                  <h2 class="f18 lh133 ttu mb10">Our Role</h2>
                   <div class="f18 lh133">
                     {% set comma = joiner() %}
                     {% for role in project.roles -%}
@@ -56,7 +56,7 @@ renderData:
               {% endif %}
               {% if project.management.content %}
                 <li class="colophon__item mb20 l:mb30">
-                  <h3 class="f18 lh133 ttu mb10">Management</h3>
+                  <h2 class="f18 lh133 ttu mb10">Management</h2>
                   <div class="f18 lh133">
                     {% blocksToHtml project.management.content %}
                   </div>
@@ -64,13 +64,13 @@ renderData:
               {% endif %}
               {% if project.year %}
                 <li class="colophon__item mb20 l:mb30">
-                  <h3 class="f18 lh133 ttu mb10">Year</h3>
+                  <h2 class="f18 lh133 ttu mb10">Year</h2>
                   <div class="f18 lh133">{{ project.year }}</div>
                 </li>
               {% endif %}
               {% if project.team.content %}
                 <li class="colophon__item mb20 l:mb30">
-                  <h3 class="f18 lh133 ttu mb10">Team</h3>
+                  <h2 class="f18 lh133 ttu mb10">Team</h2>
                   <div class="f18 lh133">
                     {% blocksToHtml project.team.content %}
                   </div>
