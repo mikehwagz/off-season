@@ -7,7 +7,7 @@
 {# Preconnect #}
 <link rel="preconnect dns-prefetch" href="https://www.googletagmanager.com" crossorigin>
 <link rel="preconnect dns-prefetch" href="https://www.google-analytics.com" crossorigin>
-{# <link rel="preconnect dns-prefetch" href="https://connect.facebook.net" crossorigin> #}
+<link rel="preconnect dns-prefetch" href="https://connect.facebook.net" crossorigin>
 
 {# Preload styles #}
 <link rel="preload" href="{% webpackAsset 'style.css' %}" as="style">
@@ -30,7 +30,7 @@
 </script>
 
 {# Facebook Pixel Code #}
-{# <script>
+<script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -41,7 +41,7 @@
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '1563363557130623');
   fbq('track', 'PageView');
-</script> #}
+</script>
 
 <meta name="description" content="{{ site.seo.description }}">
 <meta name="keywords" content="{{ site.seo.keywords | join(', ') }}" />
