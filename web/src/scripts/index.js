@@ -8,15 +8,25 @@ import Instant from '@/transitions/Instant'
 import ToProject from '@/transitions/ToProject'
 import Tab from '@/transitions/Tab'
 
-const H = new Highway.Core({
-  renderers: {
-    default: Base,
-  },
-  transitions: {
-    default: Instant,
-    contextual: {
-      toProject: ToProject,
-      tab: Tab,
-    },
-  },
-})
+class Core extends Highway.Core {
+  constructor() {
+    super({
+      renderers: {
+        default: Base,
+      },
+      transitions: {
+        default: Instant,
+        contextual: {
+          toProject: ToProject,
+          tab: Tab,
+        },
+      },
+    })
+  }
+
+  popState() {
+    window.location.reload()
+  }
+}
+
+const H = new Core()
