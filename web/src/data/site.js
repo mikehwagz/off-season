@@ -16,7 +16,13 @@ module.exports = async function() {
       ...,
       "bgColor": bgColor.hex,
     },
-    seo,
+    seo {
+      ...,
+      image {
+        altText,
+        ...image.asset->
+      }
+    }
   }`)
 
   site.footer.copyrightText = site.footer.copyrightText.replace(
