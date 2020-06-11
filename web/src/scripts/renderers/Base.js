@@ -3,7 +3,7 @@ import { on, size, add, remove } from '@selfaware/martha'
 import gsap from 'gsap'
 import app from '@/app'
 import { listen } from 'quicklink'
-import loadFonts from '@/lib/loadFonts'
+// import loadFonts from '@/lib/loadFonts'
 
 class Base extends Highway.Renderer {
   onFirstLoad() {
