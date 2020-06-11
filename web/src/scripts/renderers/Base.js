@@ -18,15 +18,16 @@ class Base extends Highway.Renderer {
     // setup render loop
     gsap.ticker.add(this.tick)
 
+    // mount app
+    this.mount()
+
     gsap.set('[data-router-view]', { autoAlpha: 1 })
 
-    loadFonts().then(() => {
-      // mount app
-      this.mount()
+    // loadFonts().then(() => {
 
-      // animate in
-      remove(document.body, 'o0')
-    })
+    //   // animate in
+    //   remove(document.body, 'o0')
+    // })
   }
 
   onEnter() {}
