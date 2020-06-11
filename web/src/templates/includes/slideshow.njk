@@ -9,6 +9,7 @@
     {% for image in module.images %}
       <div
         class="slideshow__slide js-slides"
+        data-id="{{ image.assetId }}"
         {{ 'aria-hidden=true' if not loop.first }}
       >
         {% set width = 700 %}

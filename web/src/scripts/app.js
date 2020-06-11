@@ -27,6 +27,7 @@ const state = {
   ...size(),
   t: 0,
   navOpen: false,
+  cache: [],
 }
 
 export default picoapp(components, state)

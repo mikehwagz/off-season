@@ -8,6 +8,7 @@ export default component((node, ctx) => {
   let { inc, dec, slides, progressBars } = choozy(node)
   let tl = gsap.timeline()
   let isPaused = false
+  let isVisible = false
   let isInitial = true
   let pauseThreshold = 300
   let pauseTimeout = null
@@ -20,14 +21,22 @@ export default component((node, ctx) => {
 
   ctx.on('tick', ({ wh }) => {
     if (inview(node, wh)) {
+      if (isVisible) return
+
+      isVisible = true
+
       if (isInitial) {
-        set(i)
         isInitial = false
+        set(i)
       } else {
-        isPaused && up()()
+        tl.play()
       }
     } else {
-      down()
+      if (!isVisible) return
+
+      isVisible = false
+
+      tl.pause()
     }
   })
 
@@ -75,17 +84,30 @@ export default component((node, ctx) => {
       }
     })
 
-    tl.to(progressBars[idx], {
-      duration: 4,
-      scaleX: 1,
-      ease: 'linear',
-      onComplete: () => {
-        i = wrap(idx + 1, slides.length)
-        set(i)
-      },
-    })
+    if (slides[idx].hasAttribute('data-id')) {
+      ctx.on('lazy:load', ({ cache }) => {
+        let id = cache[cache.length - 1]
+        if (id !== slides[idx].dataset.id) return
+        slides[idx].removeAttribute('data-id')
+        animate()
+      })
+    } else {
+      animate()
+    }
 
-    tl.restart()
+    function animate() {
+      tl.to(progressBars[idx], {
+        duration: 4,
+        scaleX: 1,
+        ease: 'linear',
+        onComplete: () => {
+          i = wrap(idx + 1, slides.length)
+          set(i)
+        },
+      })
+
+      tl.restart()
+    }
   }
 
   function clearPauseTimeout() {

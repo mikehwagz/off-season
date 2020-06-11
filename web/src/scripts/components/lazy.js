@@ -17,6 +17,9 @@ export default component((node, ctx) => {
     img.onload = () => {
       img.decode().then(() => {
         requestAnimationFrame(() => {
+          ctx.emit('lazy:load', ({ cache }) => ({
+            cache: cache.concat(node.dataset.id),
+          }))
           let off = on(img, 'transitionend', () => {
             off()
             lqip.remove()

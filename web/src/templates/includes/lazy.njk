@@ -3,6 +3,7 @@
   {% if padding %}
     style="padding-bottom: {{ 1 / image.metadata.dimensions.aspectRatio * 100 }}%"
   {% endif %}
+  data-id="{{ image.assetId }}"
   data-component="lazy"
 >
   <div class="lazy__lqip ro js-lqip" aria-hidden="true">
