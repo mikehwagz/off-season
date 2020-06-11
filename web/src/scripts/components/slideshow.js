@@ -85,8 +85,7 @@ export default component((node, ctx) => {
     })
 
     if (slides[idx].hasAttribute('data-id')) {
-      ctx.on('lazy:load', ({ cache }) => {
-        let id = cache[cache.length - 1]
+      ctx.on('lazy:load', (_, { id }) => {
         if (id !== slides[idx].dataset.id) return
         slides[idx].removeAttribute('data-id')
         animate()
