@@ -84,29 +84,17 @@ export default component((node, ctx) => {
       }
     })
 
-    if (slides[idx].hasAttribute('data-id')) {
-      ctx.on('lazy:load', (_, { id }) => {
-        if (id !== slides[idx].dataset.id) return
-        slides[idx].removeAttribute('data-id')
-        animate()
-      })
-    } else {
-      animate()
-    }
+    tl.to(progressBars[idx], {
+      duration: 4,
+      scaleX: 1,
+      ease: 'linear',
+      onComplete: () => {
+        i = wrap(idx + 1, slides.length)
+        set(i)
+      },
+    })
 
-    function animate() {
-      tl.to(progressBars[idx], {
-        duration: 4,
-        scaleX: 1,
-        ease: 'linear',
-        onComplete: () => {
-          i = wrap(idx + 1, slides.length)
-          set(i)
-        },
-      })
-
-      tl.restart()
-    }
+    tl.restart()
   }
 
   function clearPauseTimeout() {
