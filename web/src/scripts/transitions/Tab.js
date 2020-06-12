@@ -277,7 +277,6 @@ class Tab extends Highway.Transition {
           yPercent: 0,
           duration,
           ease,
-          stagger: duration / 18,
         },
         `a+=${duration * 0.5}`,
       )
