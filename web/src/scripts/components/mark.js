@@ -5,7 +5,6 @@ import gsap from 'gsap'
 
 export default component((node, ctx) => {
   let { front, back } = choozy(node)
-  let eventType = node.dataset.eventType
 
   let tx = ctx.getState().ww * 0.5
   let ty = ctx.getState().wh * 0.5
@@ -15,44 +14,44 @@ export default component((node, ctx) => {
   let my = 10
   let ease = 0.075
 
-  if (eventType === 'mousemove') {
-    on(window, 'mousemove', ({ clientX, clientY }) => {
-      tx = clientX
-      ty = clientY
-    })
-  } else if (eventType === 'deviceorientation') {
-    if (typeof window.DeviceOrientationEvent.requestPermission !== 'function')
-      return
+  if (isTouch()) return
 
-    ctx.on('nav:toggle', () => {
-      window.DeviceOrientationEvent.requestPermission().then((state) => {
-        if (state === 'granted') {
-          on(window, 'deviceorientation', ({ gamma, beta }) => {
-            let { ww, wh } = ctx.getState()
-            tx = clamp(ww - map(gamma, -45, 45, 0, ww), 0, ww)
-            ty = clamp(wh - map(beta, 0, 90, 0, wh), 0, wh)
-          })
-        }
-      })
-    })
-  } else {
-    return
-  }
+  on(window, 'mousemove', ({ clientX, clientY }) => {
+    tx = clientX
+    ty = clientY
+  })
 
   ctx.on('tick', ({ ww, wh }) => {
     cx = round(lerp(cx, map(tx, 0, ww, -1, 1), ease))
     cy = round(lerp(cy, map(ty, 0, wh, -1, 1), ease))
 
-    if (eventType === 'mousemove' || ctx.getState().isNavOpen) {
-      gsap.set(front, {
-        x: cx * mx,
-        y: cy * my,
-      })
+    gsap.set(front, {
+      x: cx * mx,
+      y: cy * my,
+    })
 
-      gsap.set(back, {
-        x: -cx * mx,
-        y: -cy * my,
-      })
-    }
+    gsap.set(back, {
+      x: -cx * mx,
+      y: -cy * my,
+    })
   })
 })
+
+function isTouch() {
+  var prefixes = ' -webkit- -moz- -o- -ms- '.split(' ')
+  var mq = function(query) {
+    return window.matchMedia(query).matches
+  }
+
+  if (
+    'ontouchstart' in window ||
+    (window.DocumentTouch && document instanceof DocumentTouch)
+  ) {
+    return true
+  }
+
+  // include the 'heartz' as a way to have a non matching MQ to help terminate the join
+  // https://git.io/vznFH
+  var query = ['(', prefixes.join('touch-enabled),('), 'heartz', ')'].join('')
+  return mq(query)
+}
