@@ -38,7 +38,6 @@ class ToProject extends Highway.Transition {
       tl.set(to.refs.backLabel, {
         autoAlpha: 0,
       })
-      tl.set(to.refs.backLink, { y, autoAlpha: 0 })
     }
 
     tl.set(from.refs.scroll, { overflow: 'hidden' })
@@ -46,6 +45,7 @@ class ToProject extends Highway.Transition {
       .set(to.refs.title, { y })
       .set(to.refs.content, { y: y + 100, autoAlpha: 0 })
       .set(to, { autoAlpha: 1 })
+      .set(to.refs.backLink, { y, autoAlpha: 0 })
 
     tl.to(
       from.refs.inner,
@@ -78,6 +78,15 @@ class ToProject extends Highway.Transition {
         ease: 'expo.inOut',
       },
       'a',
+    ).to(
+      to.refs.backLink,
+      {
+        autoAlpha: 1,
+        y: 0,
+        duration,
+        ease: 'expo.inOut',
+      },
+      'a',
     )
 
     if (isFromWork) {
@@ -89,27 +98,16 @@ class ToProject extends Highway.Transition {
           ease: 'expo',
         },
         'a',
+      ).to(
+        to.refs.backLabel,
+        {
+          autoAlpha: 1,
+          duration,
+          delay: 0.1,
+          ease: 'expo.inOut',
+        },
+        'a',
       )
-        .to(
-          to.refs.backLabel,
-          {
-            autoAlpha: 1,
-            duration,
-            delay: 0.1,
-            ease: 'expo.inOut',
-          },
-          'a',
-        )
-        .to(
-          to.refs.backLink,
-          {
-            autoAlpha: 1,
-            y: 0,
-            duration,
-            ease: 'expo.inOut',
-          },
-          'a',
-        )
     }
 
     if (isFooterVisible) {
