@@ -1,0 +1,11 @@
+.module {
+  transition-property: opacity, transform;
+  transition-duration: 0.3s;
+  transition-timing-function: ease-out;
+  transition-delay: 0.2s;
+
+  &.is-hidden {
+    opacity: 0;
+    transform: translateY(4rem);
+  }
+}

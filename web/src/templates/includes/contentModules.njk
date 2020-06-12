@@ -1,11 +1,15 @@
 {% for module in modules %}
   {% set type = module._type %}
   {% set paddingBottom = 'pb40 l:pb45' if module.isMarginSmall else 'pb70 l:pb125' %}
-  <div class="{% 
-    classNames 
-      'pb15 l:pb20' if type == 'heading' else paddingBottom,
-      '' if type == 'fullBleed' else 'ph20 l:ph115'
-  %}">
+  <div 
+    class="{% 
+      classNames 
+        'module wcto',
+        'pb15 l:pb20' if type == 'heading' else paddingBottom,
+        '' if type == 'fullBleed' else 'ph20 l:ph115'
+      %}"
+    data-component="reveal"
+  >
     {% set moduleTemplate %}
       {% include type + '.njk' ignore missing %}
     {% endset %}

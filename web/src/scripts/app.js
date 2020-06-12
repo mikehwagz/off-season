@@ -11,6 +11,7 @@ import lazy from '@/components/lazy'
 import password from '@/components/password'
 import header from '@/components/header'
 import emailLink from '@/components/emailLink'
+import reveal from '@/components/reveal'
 
 const components = {
   mark,
@@ -23,6 +24,7 @@ const components = {
   password,
   header,
   emailLink,
+  reveal,
 }
 
 const state = {
