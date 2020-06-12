@@ -1,5 +1,5 @@
 import { component } from 'picoapp'
-import { on, add } from '@selfaware/martha'
+import { on, add, remove } from '@selfaware/martha'
 import gsap from 'gsap'
 
 export default component((node, ctx) => {
@@ -13,6 +13,8 @@ export default component((node, ctx) => {
     if (!idle) return
 
     idle = false
+
+    add(node, 'is-active')
 
     let email = node.getAttribute('href').slice('mailto:'.length)
 
@@ -39,6 +41,7 @@ export default component((node, ctx) => {
         opacity: 0,
         onComplete: () => {
           el.remove()
+          remove(node, 'is-active')
           idle = true
         },
       })
