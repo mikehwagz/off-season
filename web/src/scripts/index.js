@@ -30,3 +30,15 @@ class Core extends Highway.Core {
 }
 
 const H = new Core()
+
+H.on('NAVIGATE_END', ({ to, location }) => {
+  if (typeof gtag === 'undefined') return
+
+  let data = {
+    page_path: location.pathname,
+    page_title: to.page.title,
+    page_location: location.href,
+  }
+
+  gtag('config', 'UA-129345000-9', data)
+})

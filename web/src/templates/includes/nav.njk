@@ -10,8 +10,12 @@
         class="{% classNames
           'tab db pea js-tabs',
           '' if loop.first else 'bl'
-        %}" 
-        href="/{{ item.slug }}"
+        %}"
+        {% if item.slug %}
+          href="/{{ item.slug }}/"
+        {% else %}
+          href="/"
+        {% endif %}
         data-transition="tab"
       >
         {% set labelCx = 'tab__label abs f32 lh100' %}
