@@ -25,16 +25,16 @@
         </div>
       </button>
       <button class="slideshow__btn slideshow__btn--inc abs fill-y df aic jce js-inc" aria-label="Next image">
-        <div class="slideshow__arrow dn l:db">
+        <div class="slideshow__arrow">
           {% include 'arrowRightShort.njk' %}
         </div>
       </button>
     </div>
   </div>
-  <div class="slideshow__pagination df mt10 mhn5">
+  <div class="slideshow__pagination df mt10">
     {% for image in module.images %}
-      <div class="x bg-muted mh5" style="height: 1px">
-        <div class="slideshow__progress-bar x y bg-black js-progressBars"></div>
+      <div class="slideshow__progress-bar x bg-muted">
+        <div class="slideshow__progress-bar__inner x y bg-black js-progressBars"></div>
       </div>
     {% endfor %}
   </div>

@@ -1,4 +1,10 @@
 .slideshow {
+  width: 80%;
+
+  @media (query('s')) {
+    width: 100%;
+  }
+
   &--sm {
     @media (query('s')) {
       width: 61%;
@@ -43,8 +49,29 @@
     transition: transform 0.3s $ease-out-quint;
   }
 
+  &__pagination {
+    margin-left: -0.1rem;
+    margin-right: -0.1rem;
+
+    @media (query('s')) {
+      margin-left: -0.5rem;
+      margin-right: -0.5rem;
+    }
+  }
+
   &__progress-bar {
-    transform-origin: left;
-    transform: scaleX(0);
+    height: 1px;
+    margin-left: 0.1rem;
+    margin-right: 0.1rem;
+
+    @media (query('s')) {
+      margin-left: 0.5rem;
+      margin-right: 0.5rem;
+    }
+
+    &__inner {
+      transform-origin: left;
+      transform: scaleX(0);
+    }
   }
 }
