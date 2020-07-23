@@ -5,9 +5,9 @@
 <title>{{ site.seo.title }}</title>
 
 {# Preconnect #}
-<link rel="preconnect dns-prefetch" href="https://www.googletagmanager.com" crossorigin>
+{# <link rel="preconnect dns-prefetch" href="https://www.googletagmanager.com" crossorigin>
 <link rel="preconnect dns-prefetch" href="https://www.google-analytics.com" crossorigin>
-<link rel="preconnect dns-prefetch" href="https://connect.facebook.net" crossorigin>
+<link rel="preconnect dns-prefetch" href="https://connect.facebook.net" crossorigin> #}
 
 {# Preload styles #}
 <link rel="preload" href="{% webpackAsset 'style.css' %}" as="style">
@@ -20,17 +20,17 @@
 <link rel="preload" href="{% webpackAsset 'main.js' %}" as="script">
 
 {# Global site tag (gtag.js) - Google Analytics #}
-<script async src="https://www.googletagmanager.com/gtag/js?id=UA-129345000-9"></script>
+{# <script async src="https://www.googletagmanager.com/gtag/js?id=UA-129345000-9"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
   gtag('config', 'UA-129345000-9');
-</script>
+</script> #}
 
 {# Facebook Pixel Code #}
-<script>
+{# <script>
   !function(f,b,e,v,n,t,s)
   {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
   n.callMethod.apply(n,arguments):n.queue.push(arguments)};
@@ -41,7 +41,7 @@
   'https://connect.facebook.net/en_US/fbevents.js');
   fbq('init', '1563363557130623');
   fbq('track', 'PageView');
-</script>
+</script> #}
 
 <meta name="description" content="{{ site.seo.description }}">
 <meta name="keywords" content="{{ site.seo.keywords | join(', ') }}" />

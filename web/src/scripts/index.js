@@ -7,6 +7,9 @@ import Base from '@/renderers/Base'
 import Instant from '@/transitions/Instant'
 import ToProject from '@/transitions/ToProject'
 import Tab from '@/transitions/Tab'
+import GAnalytics from 'ganalytics'
+
+window.ga = new GAnalytics('UA-129345000-9')
 
 class Core extends Highway.Core {
   constructor() {
@@ -32,13 +35,10 @@ class Core extends Highway.Core {
 const H = new Core()
 
 H.on('NAVIGATE_END', ({ to, location }) => {
-  if (typeof gtag === 'undefined') return
-
-  let data = {
-    page_path: location.pathname,
-    page_title: to.page.title,
-    page_location: location.href,
-  }
-
-  gtag('config', 'UA-129345000-9', data)
+  if (typeof window.ga === 'undefined') return
+  window.ga.send('pageview', {
+    dp: location.pathname,
+    dt: to.page.title,
+    dl: location.href,
+  })
 })
