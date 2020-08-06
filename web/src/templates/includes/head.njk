@@ -5,6 +5,8 @@
 <title>{{ site.seo.title }}</title>
 
 {# Preconnect #}
+<link rel="preconnect" href="https://www.google-analytics.com" crossorigin>
+<link rel="preconnect" href="https://cdn.sanity.io/" crossorigin>
 {# <link rel="preconnect dns-prefetch" href="https://www.googletagmanager.com" crossorigin>
 <link rel="preconnect dns-prefetch" href="https://www.google-analytics.com" crossorigin>
 <link rel="preconnect dns-prefetch" href="https://connect.facebook.net" crossorigin> #}
@@ -78,6 +80,12 @@
 
 {# Link stylesheet #}
 <link rel="stylesheet" href="{% webpackAsset 'style.css' %}">
+
+<script>
+  if ("serviceWorker" in navigator) {
+    navigator.serviceWorker.register('/sw.js', { scope: '/' })
+  }
+</script>
 
 {# If browser-sync stops reloading, try uncommenting the below #}
 {# {% if env !== 'production' %}

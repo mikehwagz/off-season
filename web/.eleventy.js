@@ -112,6 +112,8 @@ module.exports = function(eleventyConfig) {
     Buffer.from(str, 'utf-8').toString('base64'),
   )
 
+  eleventyConfig.addPassthroughCopy({ 'src/scripts/sw.js': '/sw.js' })
+  eleventyConfig.addPassthroughCopy({ 'src/assets/robots.txt': '/robots.txt' })
   eleventyConfig.addPassthroughCopy({ 'src/assets/icons': '/' })
   eleventyConfig.addPassthroughCopy({ 'src/assets/videos': '/' })
 
