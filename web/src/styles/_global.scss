@@ -81,6 +81,12 @@ input {
   @media (query('l')) {
     height: 35rem;
   }
+
+  &__address {
+    .inline-link {
+      box-shadow: unset !important;
+    }
+  }
 }
 
 .p-tabs {

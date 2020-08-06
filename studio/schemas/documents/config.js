@@ -60,14 +60,9 @@ export default {
           type: 'string',
         },
         {
-          title: 'Address Line 1',
-          name: 'addressLine1',
-          type: 'string',
-        },
-        {
-          title: 'Address Line 2',
-          name: 'addressLine2',
-          type: 'string',
+          title: 'Address',
+          name: 'address',
+          type: 'shortText',
         },
         {
           title: 'Email Address',
