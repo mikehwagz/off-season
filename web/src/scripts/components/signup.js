@@ -1,6 +1,6 @@
 import { component } from 'picoapp'
 import choozy from 'choozy'
-import { on } from '@selfaware/martha'
+import { on } from 'martha'
 import gsap from 'gsap'
 import createWave from '@/lib/wave'
 

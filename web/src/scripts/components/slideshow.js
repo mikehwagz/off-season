@@ -1,6 +1,6 @@
 import { component } from 'picoapp'
 import choozy from 'choozy'
-import { on, wrap } from '@selfaware/martha'
+import { on, wrap } from 'martha'
 import gsap from 'gsap'
 import inview from '@/util/inview'
 

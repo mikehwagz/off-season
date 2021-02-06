@@ -1,5 +1,5 @@
 import { component } from 'picoapp'
-import { on, remove, add } from '@selfaware/martha'
+import { on, remove, add } from 'martha'
 
 export default component((node) => {
   let thumbs = Array.from(document.querySelectorAll('.js-thumb'))

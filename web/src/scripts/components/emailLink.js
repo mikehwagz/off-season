@@ -1,5 +1,5 @@
 import { component } from 'picoapp'
-import { on, add, remove } from '@selfaware/martha'
+import { on, add, remove } from 'martha'
 import gsap from 'gsap'
 
 export default component((node, ctx) => {

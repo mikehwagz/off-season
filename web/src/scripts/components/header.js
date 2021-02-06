@@ -1,6 +1,6 @@
 import { component } from 'picoapp'
 import choozy from 'choozy'
-import { on, toggle } from '@selfaware/martha'
+import { on, toggle } from 'martha'
 
 export default component((node, ctx) => {
   let { burger } = choozy(node)

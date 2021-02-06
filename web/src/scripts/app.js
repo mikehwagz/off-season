@@ -1,5 +1,5 @@
 import { picoapp } from 'picoapp'
-import { size } from '@selfaware/martha'
+import { size } from 'martha'
 
 import mark from '@/components/mark'
 import clock from '@/components/clock'

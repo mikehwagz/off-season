@@ -1,6 +1,6 @@
 import { component } from 'picoapp'
 import inview from '@/util/inview'
-import { add, remove } from '@selfaware/martha'
+import { add, remove } from 'martha'
 
 export default component((node, ctx) => {
   if (inview(node, ctx.getState().wh)) return

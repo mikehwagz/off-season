@@ -1,4 +1,4 @@
-import { clamp } from '@selfaware/martha'
+import { clamp } from 'martha'
 
 /**
  * Reports the current scroll percentage of an element within the viewport

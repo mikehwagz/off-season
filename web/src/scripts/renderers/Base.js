@@ -1,5 +1,5 @@
 import Highway from '@dogstudio/highway'
-import { on, size, add, remove } from '@selfaware/martha'
+import { on, size, add, remove } from 'martha'
 import gsap from 'gsap'
 import app from '@/app'
 import { listen } from 'quicklink'
@@ -13,7 +13,6 @@ class Base extends Highway.Renderer {
     // broadcast global events
     on(window, 'resize', this.resize)
     on(window, 'focus', this.focus)
-    on(window, 'blur', this.blur)
 
     // setup render loop
     gsap.ticker.add(this.tick)
@@ -52,10 +51,6 @@ class Base extends Highway.Renderer {
 
   focus = () => {
     app.emit('focus')
-  }
-
-  blur = () => {
-    app.emit('blur')
   }
 
   tick = () => {

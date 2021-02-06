@@ -1823,11 +1823,6 @@
     "@sanity/util" "1.149.16"
     loader-utils "1.1.0"
 
-"@selfaware/martha@^0.0.7":
-  version "0.0.7"
-  resolved "https://registry.yarnpkg.com/@selfaware/martha/-/martha-0.0.7.tgz#c34ccba0c9893e6a82699b319057eece661cf7d1"
-  integrity sha512-imPq04wWDnJ3K5B1yFM+iUc+ZYtGAdne5WPqw+q6Kf4TlXaLCppBRqjBdl95mdNkkDXyNH1lyiTReI+PHF9UjA==
-
 "@selfaware/wool@^1.0.3":
   version "1.0.3"
   resolved "https://registry.yarnpkg.com/@selfaware/wool/-/wool-1.0.3.tgz#77b7633fd7106dfce3a1e02782df08670a82d649"
@@ -7738,6 +7733,11 @@ markdown-it@^8.4.2:
     linkify-it "^2.0.0"
     mdurl "^1.0.1"
     uc.micro "^1.0.5"
+
+martha@^1.0.2:
+  version "1.0.2"
+  resolved "https://registry.yarnpkg.com/martha/-/martha-1.0.2.tgz#a6679949b2a380320b29f0e311ae8469a58a47e2"
+  integrity sha512-pUwRu83hEXenbn3DQlWBszKI06Jp4QE7953mBlLgq5LKZiFKGXM9i4T+0/ndqTa6HfeXhTJXVe+rOaNz2n8gXw==
 
 material-colors@^1.2.1:
   version "1.2.6"

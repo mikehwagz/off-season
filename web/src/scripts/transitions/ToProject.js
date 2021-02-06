@@ -1,7 +1,7 @@
 import Highway from '@dogstudio/highway'
 import choozy from 'choozy'
 import gsap from 'gsap'
-import { rect, round, map, has } from '@selfaware/martha'
+import { rect, round, map, has } from 'martha'
 import app from '@/app'
 import inview from '@/util/inview'
 

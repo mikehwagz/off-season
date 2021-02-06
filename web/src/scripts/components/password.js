@@ -1,6 +1,6 @@
 import { component } from 'picoapp'
 import choozy from 'choozy'
-import { on } from '@selfaware/martha'
+import { on } from 'martha'
 
 export default component((node, ctx) => {
   let { form } = choozy(node)
