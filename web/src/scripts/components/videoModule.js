@@ -63,6 +63,5 @@ export default component((node, ctx) => {
 
   return () => {
     offClick()
-    offLoaded()
   }
 })
