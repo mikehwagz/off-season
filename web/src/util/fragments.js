@@ -15,6 +15,7 @@ const contentModules = groq`contentModules[] {
     'caption': caption.content,
     'poster': poster.image.asset->,
     'altText': image.altText,
+    aspectRatio,
     hasAudio
   },
   _type == 'twoUpImageAndText' => {

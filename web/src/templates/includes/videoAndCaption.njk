@@ -5,12 +5,23 @@
     data-audio
   {% endif %}
 >
-  <div class="x r r--1x1">
+  <div
+    class="x r"
+    style="padding-top: 
+      {%- if module.aspectRatio -%}
+        {{ 1 / module.aspectRatio * 100 }}%
+      {%- else -%}
+        100%
+      {%- endif -%}
+    "
+  >
     <div class="ro">
       <video
         class="x js-video"
         src="{{ module.video.url }}"
-        poster="{% urlFor module.poster, 695 %}"
+        {% if module.poster %}
+          poster="{% urlFor module.poster, 695 %}"
+        {% endif %}
         aria-label="{{ module.altText }}"
         preload="auto"
         muted

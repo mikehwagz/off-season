@@ -1,6 +1,6 @@
 import { component } from 'picoapp'
 import createWave from '@/lib/wave'
-import { on } from 'martha'
+import { on, once } from 'martha'
 import choozy from 'choozy'
 import inview from '@/util/inview'
 import gsap from 'gsap'
@@ -61,5 +61,8 @@ export default component((node, ctx) => {
     }
   }
 
-  return offClick
+  return () => {
+    offClick()
+    offLoaded()
+  }
 })
